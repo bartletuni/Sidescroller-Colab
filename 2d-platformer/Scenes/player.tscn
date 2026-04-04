@@ -133,7 +133,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("17_un823")
 }],
-"loop": true,
+"loop": false,
 "name": &"Dash_1",
 "speed": 20.0
 }, {
@@ -350,11 +350,19 @@ animations = [{
 "speed": 20.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h5cax"]
+radius = 45.0
+height = 248.0
+
 [node name="Player" type="CharacterBody2D" unique_id=862117949]
 script = ExtResource("1_v0iea")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=867704004]
 sprite_frames = SubResource("SpriteFrames_wf5ty")
-animation = &"Dash_1"
+animation = &"Idle"
 autoplay = "Idle"
-frame_progress = 0.6255966
+frame_progress = 0.51007175
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1432175875]
+position = Vector2(1, 21)
+shape = SubResource("CapsuleShape2D_h5cax")
