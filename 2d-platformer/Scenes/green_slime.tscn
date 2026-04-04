@@ -131,12 +131,12 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wu7ut"]
-radius = 76.92299
-height = 207.69208
+radius = 88.46144
+height = 230.76897
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2uxyh"]
-radius = 84.61529
-height = 223.07666
+radius = 92.30759
+height = 246.15356
 
 [node name="GreenSlime" type="CharacterBody2D" unique_id=915226961]
 scale = Vector2(0.5200006, 0.5200006)
@@ -146,9 +146,10 @@ script = ExtResource("1_wu7ut")
 sprite_frames = SubResource("SpriteFrames_iwftj")
 animation = &"Idle"
 autoplay = "Idle"
-frame_progress = 0.8514165
+frame_progress = 0.60002923
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1549967251]
+position = Vector2(0, 9.615374)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_wu7ut")
 
@@ -161,5 +162,6 @@ target_position = Vector2(-170, 0)
 [node name="DamageBox" type="Area2D" parent="." unique_id=1108696169]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageBox" unique_id=1629976371]
+position = Vector2(0, 5.769224)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_2uxyh")
