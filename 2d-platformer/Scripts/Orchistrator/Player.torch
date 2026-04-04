@@ -168,8 +168,7 @@ pin_data = Array[Dictionary]([{
 "pin_name": &"return_value",
 "type": 1,
 "dir": 1,
-"flags": 1026,
-"dv": false
+"flags": 1026
 }])
 
 [obj type="OScriptVariable" id="OScriptVariable_6ev3c"]
