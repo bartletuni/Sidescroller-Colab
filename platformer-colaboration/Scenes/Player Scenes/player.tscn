@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://du05pquaq5el2" path="res://CraftPix Characters (Samurai)/Samurai/Attack_2.png" id="3_qpue1"]
 [ext_resource type="Texture2D" uid="uid://bwjnioxd002n0" path="res://CraftPix Characters (Samurai)/Samurai/Attack_3.png" id="4_cab5n"]
 [ext_resource type="Texture2D" uid="uid://cd2ktwo2vwy3l" path="res://CraftPix Characters (Samurai)/Samurai/Idle.png" id="5_hlcjs"]
+[ext_resource type="Texture2D" uid="uid://ic88rgqsc1ca" path="res://CraftPix Characters (Samurai)/Samurai/Jump.png" id="6_1kwyc"]
 [ext_resource type="Texture2D" uid="uid://cjiw2b62blhcg" path="res://CraftPix Characters (Samurai)/Samurai/Run.png" id="6_oycvb"]
 [ext_resource type="Texture2D" uid="uid://lby82kvw4215" path="res://CraftPix Characters (Samurai)/Samurai/Walk.png" id="7_xio7c"]
 
@@ -79,6 +80,42 @@ region = Rect2(384, 0, 64, 128)
 [sub_resource type="AtlasTexture" id="AtlasTexture_ny8xk"]
 atlas = ExtResource("5_hlcjs")
 region = Rect2(512, 0, 64, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qpue1"]
+atlas = ExtResource("6_1kwyc")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cab5n"]
+atlas = ExtResource("6_1kwyc")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hlcjs"]
+atlas = ExtResource("6_1kwyc")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oycvb"]
+atlas = ExtResource("6_1kwyc")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xio7c"]
+atlas = ExtResource("6_1kwyc")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4btd"]
+atlas = ExtResource("6_1kwyc")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tg33s"]
+atlas = ExtResource("6_1kwyc")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wfxje"]
+atlas = ExtResource("6_1kwyc")
+region = Rect2(896, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_no5to"]
+atlas = ExtResource("6_1kwyc")
+region = Rect2(1024, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tdxyo"]
 atlas = ExtResource("6_oycvb")
@@ -226,6 +263,38 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_qpue1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cab5n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hlcjs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oycvb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xio7c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c4btd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tg33s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wfxje")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_no5to")
+}],
+"loop": false,
+"name": &"Jump",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_tdxyo")
 }, {
 "duration": 1.0,
@@ -286,12 +355,18 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1447609646]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_45clo"]
+radius = 9.0
+height = 66.0
+
+[node name="Player" type="CharacterBody2D" unique_id=1447609646]
 script = ExtResource("1_45clo")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=938781721]
+[node name="Animation" type="AnimatedSprite2D" parent="." unique_id=938781721]
 sprite_frames = SubResource("SpriteFrames_c4btd")
-animation = &"Attack_3"
+animation = &"Idle"
 autoplay = "Idle"
-frame = 3
-frame_progress = 1.0
+
+[node name="Hitbox" type="CollisionShape2D" parent="." unique_id=47658649]
+position = Vector2(1, 31)
+shape = SubResource("CapsuleShape2D_45clo")
