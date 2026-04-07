@@ -109,14 +109,6 @@ region = Rect2(640, 0, 128, 128)
 atlas = ExtResource("6_1kwyc")
 region = Rect2(768, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wfxje"]
-atlas = ExtResource("6_1kwyc")
-region = Rect2(896, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_no5to"]
-atlas = ExtResource("6_1kwyc")
-region = Rect2(1024, 0, 128, 128)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_tdxyo"]
 atlas = ExtResource("6_oycvb")
 region = Rect2(0, 0, 128, 128)
@@ -284,10 +276,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_tg33s")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wfxje")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_no5to")
+"texture": SubResource("AtlasTexture_qpue1")
 }],
 "loop": false,
 "name": &"Jump",
@@ -366,7 +355,14 @@ script = ExtResource("1_45clo")
 sprite_frames = SubResource("SpriteFrames_c4btd")
 animation = &"Idle"
 autoplay = "Idle"
+frame = 4
+frame_progress = 0.39334866
 
 [node name="Hitbox" type="CollisionShape2D" parent="." unique_id=47658649]
 position = Vector2(1, 31)
 shape = SubResource("CapsuleShape2D_45clo")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1625468662]
+zoom = Vector2(1.665, 1.665)
+process_callback = 0
+position_smoothing_enabled = true

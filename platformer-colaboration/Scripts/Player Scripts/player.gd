@@ -5,6 +5,8 @@ const SPEED = 300.0
 const RUN_SPEED = 400.0
 const JUMP_VELOCITY = -400.0
 
+@export var push_force: float = 80.0
+
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -28,5 +30,12 @@ func _physics_process(delta: float) -> void:
 		#$Animation.play("Run")
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-
+		
 	move_and_slide()
+	
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		var collider = collision.get_collider()
+		
+		if collider is RigidBody2D:
+			collider.apply_central_force(-collision.get_normal() * push_force)
