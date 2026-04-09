@@ -90,18 +90,6 @@ region = Rect2(276, 0, 92, 92)
 atlas = ExtResource("5_oycvb")
 region = Rect2(368, 0, 92, 92)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ft3h4"]
-atlas = ExtResource("5_oycvb")
-region = Rect2(0, 92, 92, 92)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cg0mt"]
-atlas = ExtResource("5_oycvb")
-region = Rect2(92, 92, 92, 92)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_45r7e"]
-atlas = ExtResource("5_oycvb")
-region = Rect2(184, 92, 92, 92)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_gb68x"]
 atlas = ExtResource("6_xio7c")
 region = Rect2(0, 0, 92, 92)
@@ -279,15 +267,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_akmr0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ft3h4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cg0mt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_45r7e")
 }],
 "loop": false,
 "name": &"Jump",
@@ -398,7 +377,7 @@ script = ExtResource("1_45clo")
 
 [node name="Animation" type="AnimatedSprite2D" parent="." unique_id=938781721]
 sprite_frames = SubResource("SpriteFrames_c4btd")
-animation = &"Pickup"
+animation = &"Jump"
 autoplay = "Idle"
 frame = 4
 frame_progress = 1.0
@@ -409,6 +388,6 @@ position = Vector2(1, 5)
 shape = SubResource("CapsuleShape2D_45clo")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1625468662]
-zoom = Vector2(1.665, 1.665)
+zoom = Vector2(3, 3)
 process_callback = 0
 position_smoothing_enabled = true
