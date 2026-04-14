@@ -15,6 +15,16 @@ run/main_scene="uid://b1uugyipv0tk3"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+PlayerData="*uid://c8ea4kxkqrs35"
+EnemyData="*uid://d270qtqjan0ej"
+
+[global_group]
+
+Enemies="Enemies"
+Players="Player Characters"
+
 [input]
 
 jump={

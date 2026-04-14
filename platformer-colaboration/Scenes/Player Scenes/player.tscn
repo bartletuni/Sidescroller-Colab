@@ -154,18 +154,6 @@ region = Rect2(92, 0, 92, 92)
 atlas = ExtResource("8_qbc6l")
 region = Rect2(184, 0, 92, 92)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5s6rg"]
-atlas = ExtResource("8_qbc6l")
-region = Rect2(276, 0, 92, 92)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jsiit"]
-atlas = ExtResource("8_qbc6l")
-region = Rect2(368, 0, 92, 92)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rb4ui"]
-atlas = ExtResource("8_qbc6l")
-region = Rect2(0, 92, 92, 92)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_hwxlp"]
 atlas = ExtResource("9_kg5gs")
 region = Rect2(0, 0, 92, 92)
@@ -330,19 +318,10 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_f225w")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5s6rg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jsiit")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rb4ui")
 }],
-"loop": true,
+"loop": false,
 "name": &"Slide",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -372,19 +351,16 @@ animations = [{
 radius = 9.0
 height = 66.0
 
-[node name="Player" type="CharacterBody2D" unique_id=1447609646]
+[node name="Player" type="CharacterBody2D" unique_id=1447609646 groups=["Players"]]
 script = ExtResource("1_45clo")
 
 [node name="Animation" type="AnimatedSprite2D" parent="." unique_id=938781721]
 sprite_frames = SubResource("SpriteFrames_c4btd")
-animation = &"Jump"
+animation = &"Slide"
 autoplay = "Idle"
-frame = 4
-frame_progress = 1.0
 
-[node name="Hitbox" type="CollisionShape2D" parent="." unique_id=47658649]
-visible = false
-position = Vector2(1, 5)
+[node name="CollisionBox" type="CollisionShape2D" parent="." unique_id=47658649]
+position = Vector2(1, 3)
 shape = SubResource("CapsuleShape2D_45clo")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1625468662]
