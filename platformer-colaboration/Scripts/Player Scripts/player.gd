@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @onready var player: CharacterBody2D = $"."
-@onready var animation: AnimatedSprite2D = $Animation
+@onready var animator: AnimatedSprite2D = $Animator
 
 func _physics_process(delta: float) -> void:
 	
@@ -13,5 +13,5 @@ func _physics_process(delta: float) -> void:
 	
 	PlayerData.animator(player)
 	
-	if animation.animation != PlayerData.current_animation:
-		$Animation.play(PlayerData.current_animation)
+	if animator.animation != PlayerData.current_animation:
+		$Animator.play(PlayerData.current_animation)

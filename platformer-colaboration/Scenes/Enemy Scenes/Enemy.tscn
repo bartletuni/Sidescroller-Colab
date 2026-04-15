@@ -87,6 +87,11 @@ region = Rect2(184, 92, 92, 92)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_heljy"]
 animations = [{
+"frames": [],
+"loop": true,
+"name": &"Attack",
+"speed": 8.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_heljy")
@@ -168,8 +173,8 @@ radius = 9.0
 height = 60.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_25to5"]
-radius = 19.0
-height = 66.0
+radius = 23.0
+height = 74.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u5n0e"]
 radius = 113.07078
@@ -179,7 +184,7 @@ script = ExtResource("1_25to5")
 
 [node name="Animator" type="AnimatedSprite2D" parent="." unique_id=809814956]
 sprite_frames = SubResource("SpriteFrames_heljy")
-animation = &"Run"
+animation = &"Attack"
 autoplay = "Walk"
 
 [node name="RayLeft" type="RayCast2D" parent="." unique_id=271676554]
@@ -204,5 +209,6 @@ shape = SubResource("CapsuleShape2D_25to5")
 shape = SubResource("CircleShape2D_u5n0e")
 
 [connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="area_entered" from="detection_radius" to="." method="_on_detection_radius_area_entered"]
 [connection signal="body_entered" from="detection_radius" to="." method="_on_detection_radius_body_entered"]

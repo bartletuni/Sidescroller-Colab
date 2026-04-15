@@ -5,6 +5,7 @@ const SPEED = 125
 const DAMAGE = 1
 
 var speed = SPEED
+var attacking = 0
 
 var animation_picker = ["Idle", "Walk", "Run", "Jump", "Attack"]
 var current_animation = ""
@@ -33,20 +34,30 @@ func damage(enemy_damage):
 
 func animation(enemy):
 	var AnimNum = 0
-	if enemy.velocity.x > 0 and enemy.velocity.x < 126:
+	
+	if enemy.velocity.x > 0 and enemy.velocity.x < 126 and not attacking == 1:
 		enemy.animator.flip_h = false
 		AnimNum = 1
-	elif enemy.velocity.x < 0 and enemy.velocity.x < 126:
+		
+	elif enemy.velocity.x < 0 and enemy.velocity.x < 126 and not attacking == 1:
 		enemy.animator.flip_h = true
 		AnimNum = 1
-	elif enemy.velocity.x == 0:
+		
+	elif enemy.velocity.x == 0 and not attacking == 1:
 		AnimNum = 0
-	elif enemy.velocity.x > 125:
+		
+	elif enemy.velocity.x > 125 and not attacking == 1:
 		enemy.animator.flip_h = false
 		AnimNum = 2
-	elif enemy.velocity.x < -125:
+		
+	elif enemy.velocity.x < -125 and not attacking == 1:
 		enemy.animator.flip_h = true
 		AnimNum = 2
+		
+	elif attacking == 1:
+		enemy.velocity.x = enemy.velocity.x * 0
+		AnimNum = 4
+
 	current_animation = animation_picker[AnimNum]
 	
 func run(enemy):
