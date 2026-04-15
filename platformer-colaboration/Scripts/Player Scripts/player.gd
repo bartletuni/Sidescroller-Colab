@@ -9,8 +9,9 @@ func _physics_process(delta: float) -> void:
 	
 	PlayerData.gravity(player, delta)
 	
-	PlayerData.player_movement(player, PlayerData.direction, PlayerData.sprint, PlayerData.slide, PlayerData.crouch, PlayerData.jump)
+	PlayerData.player_movement(player, delta, PlayerData.direction, PlayerData.sprint, PlayerData.slide, PlayerData.crouch, PlayerData.jump)
 	
 	PlayerData.animator(player)
 	
-	$Animation.play(PlayerData.current_animation)
+	if animation.animation != PlayerData.current_animation:
+		$Animation.play(PlayerData.current_animation)

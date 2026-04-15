@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 PlayerData="*uid://c8ea4kxkqrs35"
 EnemyData="*uid://d270qtqjan0ej"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/TileMapDual/plugin.cfg")
+
 [global_group]
 
 Enemies="Enemies"

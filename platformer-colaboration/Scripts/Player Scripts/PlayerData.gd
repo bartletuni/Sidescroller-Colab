@@ -17,10 +17,12 @@ var sprint = Input
 var slide = Input
 var crouch = Input
 var jump = Input
+var jumped = false
 
 func gravity(player, delta):
 	var gravity_value = ProjectSettings.get_setting("physics/2d/default_gravity")
-	player.velocity.y = gravity_value * delta * 15
+	if not player.is_on_floor():
+		player.velocity += player.get_gravity() * delta
 
 func _ready() -> void:
 	pass
@@ -33,7 +35,11 @@ func movement_input():
 	jump = Input.is_action_just_pressed("jump")
 	
 
-func player_movement(player, direction, sprint, slide, crouch, jump):
+func player_movement(player, delta, direction, sprint, slide, crouch, jump):
+	if jump and player.is_on_floor():
+		player.velocity.y += JUMP_VELOCITY
+		jumped = true
+	
 	if direction and not sprint and not jump and not slide:
 		player.velocity.x = direction * SPEED
 
@@ -43,18 +49,19 @@ func player_movement(player, direction, sprint, slide, crouch, jump):
 	elif direction and sprint and slide and not jump:
 		player.velocity.x = direction * SLIDE_SPEED
 		
-	elif direction and jump and not slide:
-		player.velocity.y = JUMP_VELOCITY
-		
 	elif not direction:
 		player.velocity.x = move_toward(player.velocity.x, 0, SPEED)
-		print("help")
 
 	player.move_and_slide()
+	
+	if player.is_on_floor():
+		jumped = false
 
 func animator(player):
 	var AnimNum = 0
-	if player.velocity.x > 0 and not sprint:
+	if jumped and not player.is_on_floor():
+		AnimNum = 3
+	elif player.velocity.x > 0 and not sprint:
 		player.animation.flip_h = false
 		AnimNum = 1
 	elif player.velocity.x < 0 and not sprint:
@@ -74,5 +81,6 @@ func animator(player):
 	elif player.velocity.x < 0 and sprint and slide:
 		player.animation.flip_h = true
 		AnimNum = 4
+
 		
 	current_animation = animation_picker[AnimNum]
