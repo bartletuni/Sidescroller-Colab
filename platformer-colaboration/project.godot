@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 PlayerData="*uid://c8ea4kxkqrs35"
 EnemyData="*uid://d270qtqjan0ej"
+WorldData="*uid://q8wqiajvc6bs"
 
 [editor_plugins]
 

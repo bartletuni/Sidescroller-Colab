@@ -351,6 +351,20 @@ animations = [{
 radius = 9.0
 height = 66.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qpue1"]
+bg_color = Color(0.90110576, 0.1347261, 0.3327824, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cab5n"]
+bg_color = Color(0.20461825, 0.7116885, 0.31153223, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
 [node name="Player" type="CharacterBody2D" unique_id=1447609646 groups=["Players"]]
 script = ExtResource("1_45clo")
 
@@ -367,3 +381,15 @@ shape = SubResource("CapsuleShape2D_45clo")
 zoom = Vector2(3, 3)
 process_callback = 0
 position_smoothing_enabled = true
+
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=1538172768]
+offset_left = -16.0
+offset_top = -57.0
+offset_right = 16.0
+offset_bottom = -45.0
+theme_override_styles/background = SubResource("StyleBoxFlat_qpue1")
+theme_override_styles/fill = SubResource("StyleBoxFlat_cab5n")
+max_value = 10.0
+step = 1.0
+value = 10.0
+show_percentage = false

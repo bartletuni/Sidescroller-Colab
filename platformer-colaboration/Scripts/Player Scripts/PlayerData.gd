@@ -25,9 +25,6 @@ func gravity(player, delta):
 	if not player.is_on_floor():
 		player.velocity += player.get_gravity() * delta
 
-func _ready() -> void:
-	pass
-
 func movement_input():
 	direction = Input.get_axis("move_left", "move_right")
 	sprint = Input.is_action_pressed("run")
@@ -63,31 +60,46 @@ func player_movement(player, delta, direction, sprint, slide, crouch, jump):
 	if player.is_on_floor():
 		jumped = false
 
+func healthbar(bar):
+	bar.value = health
+
+func death(player):
+	WorldData.reload()
+
 func animator(player):
 	var AnimNum = 0
+	
 	if jumped and not player.is_on_floor() and player.velocity.x > 0:
 		player.animator.flip_h = false
 		AnimNum = 3
+		
 	elif jumped and not player.is_on_floor() and player.velocity.x < 0:
 		player.animator.flip_h = true
 		AnimNum = 3
+		
 	elif player.velocity.x > 0 and not sprint:
 		player.animator.flip_h = false
 		AnimNum = 1
+		
 	elif player.velocity.x < 0 and not sprint:
 		player.animator.flip_h = true
 		AnimNum = 1
+		
 	elif player.velocity.x == 0:
 		AnimNum = 0
+		
 	elif player.velocity.x > 0 and sprint and not slide:
 		player.animator.flip_h = false
 		AnimNum = 2
+		
 	elif player.velocity.x < 0 and sprint and not slide:
 		player.animator.flip_h = true
 		AnimNum = 2
+		
 	elif player.velocity.x > 0 and sprint and slide:
 		player.animator.flip_h = false
 		AnimNum = 4
+		
 	elif player.velocity.x < 0 and sprint and slide:
 		player.animator.flip_h = true
 		AnimNum = 4
