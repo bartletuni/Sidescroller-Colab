@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c065ubdqw4rra" path="res://Assets/Textures/TileMapDual_Test1_Cobblestone.png" id="5_axn02"]
 [ext_resource type="Texture2D" uid="uid://cwwqxhq06wxa6" path="res://Assets/Textures/Cobblestone_Test.png" id="6_bg7bk"]
 [ext_resource type="Script" uid="uid://cjk8nronimk5r" path="res://addons/TileMapDual/tile_map_dual.gd" id="7_kicdc"]
+[ext_resource type="PackedScene" uid="uid://brjr21bvfx4sp" path="res://Scenes/Object Scenes/Ladder.tscn" id="8_axn02"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2b0cf"]
 texture = ExtResource("1_ua7y4")
@@ -1125,3 +1126,6 @@ tile_set = SubResource("TileSet_r5847")
 script = ExtResource("7_kicdc")
 godot_4_3_compatibility = false
 metadata/_custom_type_script = "uid://cjk8nronimk5r"
+
+[node name="Ladder" parent="." unique_id=644226253 instance=ExtResource("8_axn02")]
+position = Vector2(501, 59)

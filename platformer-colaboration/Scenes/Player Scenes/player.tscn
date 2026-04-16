@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bhucdeffc8jd2"]
 
 [ext_resource type="Script" uid="uid://bps3pd3girxak" path="res://Scripts/Player Scripts/player.gd" id="1_45clo"]
+[ext_resource type="Texture2D" uid="uid://bedr1ya36ncqr" path="res://Astronaut/FIGHT_IDLE.png" id="2_cab5n"]
 [ext_resource type="Texture2D" uid="uid://1go6e5e261go" path="res://Astronaut/CROUCH.png" id="2_qpue1"]
 [ext_resource type="Texture2D" uid="uid://car6yptu4i2ak" path="res://Astronaut/IDLE.png" id="3_cab5n"]
 [ext_resource type="Texture2D" uid="uid://43u4706dio88" path="res://Astronaut/INJURED_WALK.png" id="4_hlcjs"]
@@ -9,6 +10,38 @@
 [ext_resource type="Texture2D" uid="uid://c4np5gkmjdoxm" path="res://Astronaut/RUN.png" id="7_bn047"]
 [ext_resource type="Texture2D" uid="uid://dsrdv6wj5ofh1" path="res://Astronaut/SLIDE.png" id="8_qbc6l"]
 [ext_resource type="Texture2D" uid="uid://cave1h8oblj73" path="res://Astronaut/WALK.png" id="9_kg5gs"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hlcjs"]
+atlas = ExtResource("2_cab5n")
+region = Rect2(0, 0, 92, 92)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oycvb"]
+atlas = ExtResource("2_cab5n")
+region = Rect2(92, 0, 92, 92)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xio7c"]
+atlas = ExtResource("2_cab5n")
+region = Rect2(184, 0, 92, 92)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bn047"]
+atlas = ExtResource("2_cab5n")
+region = Rect2(276, 0, 92, 92)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qbc6l"]
+atlas = ExtResource("2_cab5n")
+region = Rect2(368, 0, 92, 92)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kg5gs"]
+atlas = ExtResource("2_cab5n")
+region = Rect2(0, 92, 92, 92)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ft3h4"]
+atlas = ExtResource("2_cab5n")
+region = Rect2(92, 92, 92, 92)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cg0mt"]
+atlas = ExtResource("2_cab5n")
+region = Rect2(184, 92, 92, 92)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6u5yh"]
 atlas = ExtResource("2_qpue1")
@@ -180,6 +213,35 @@ region = Rect2(0, 92, 92, 92)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_c4btd"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hlcjs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oycvb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xio7c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bn047")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qbc6l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kg5gs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ft3h4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cg0mt")
+}],
+"loop": true,
+"name": &"Climb",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_6u5yh")
@@ -370,7 +432,7 @@ script = ExtResource("1_45clo")
 
 [node name="Animator" type="AnimatedSprite2D" parent="." unique_id=938781721]
 sprite_frames = SubResource("SpriteFrames_c4btd")
-animation = &"Slide"
+animation = &"Climb"
 autoplay = "Idle"
 
 [node name="CollisionBox" type="CollisionShape2D" parent="." unique_id=47658649]

@@ -8,7 +8,7 @@ const JUMP_VELOCITY = -425.0
 
 var health = 10
 
-var animation_picker = ["Idle", "Walk", "Run", "Jump", "Slide", "Attack"]
+var animation_picker = ["Idle", "Walk", "Run", "Jump", "Slide", "Attack", "Climb"]
 var current_animation = ""
 
 var flip = false
@@ -17,12 +17,15 @@ var sprint = Input
 var slide = Input
 var crouch = Input
 var jump = Input
+var climb = Input
 var jumped = false
 var sliding = false
+var can_climb = false
+var gravity_on = true
 
 func gravity(player, delta):
 	var gravity_value = ProjectSettings.get_setting("physics/2d/default_gravity")
-	if not player.is_on_floor():
+	if gravity_on and not player.is_on_floor():
 		player.velocity += player.get_gravity() * delta
 
 func movement_input():
@@ -31,11 +34,11 @@ func movement_input():
 	slide = Input.is_action_pressed("crouch")
 	crouch = Input.is_action_pressed("crouch")
 	jump = Input.is_action_just_pressed("jump")
-	
+	climb = Input.is_action_pressed("climb")
 
-func player_movement(player, delta, direction, sprint, slide, crouch, jump):
+func player_movement(player, delta, direction, sprint, slide, crouch, jump, climb):
 	if jump and player.is_on_floor():
-		player.velocity.y += JUMP_VELOCITY
+		player.velocity.y = JUMP_VELOCITY
 		jumped = true
 		
 	if slide and player.is_on_floor() and sprint:
@@ -46,7 +49,7 @@ func player_movement(player, delta, direction, sprint, slide, crouch, jump):
 			player.velocity.x = -SLIDE_SPEED
 			sliding = true
 
-	if direction and not sprint and not jump and not slide:
+	if direction and not sprint and not jump and not slide and not climb:
 		player.velocity.x = direction * SPEED
 
 	elif direction and sprint and not jump and not slide:
@@ -72,37 +75,45 @@ func animator(player):
 	if jumped and not player.is_on_floor() and player.velocity.x > 0:
 		player.animator.flip_h = false
 		AnimNum = 3
-		
+
 	elif jumped and not player.is_on_floor() and player.velocity.x < 0:
 		player.animator.flip_h = true
 		AnimNum = 3
-		
+
 	elif player.velocity.x > 0 and not sprint:
 		player.animator.flip_h = false
 		AnimNum = 1
-		
+
 	elif player.velocity.x < 0 and not sprint:
 		player.animator.flip_h = true
 		AnimNum = 1
-		
+
 	elif player.velocity.x == 0:
 		AnimNum = 0
-		
+
 	elif player.velocity.x > 0 and sprint and not slide:
 		player.animator.flip_h = false
 		AnimNum = 2
-		
+
 	elif player.velocity.x < 0 and sprint and not slide:
 		player.animator.flip_h = true
 		AnimNum = 2
-		
+
 	elif player.velocity.x > 0 and sprint and slide:
 		player.animator.flip_h = false
 		AnimNum = 4
-		
+
 	elif player.velocity.x < 0 and sprint and slide:
 		player.animator.flip_h = true
 		AnimNum = 4
 
+	if can_climb and climb:
+		gravity_on = false
+		player.velocity.y = -150
+		AnimNum = 6
+
+	elif can_climb and not climb:
+		gravity_on = true
+		AnimNum = 0
 		
 	current_animation = animation_picker[AnimNum]
