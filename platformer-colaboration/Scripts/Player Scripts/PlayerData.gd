@@ -1,12 +1,13 @@
 extends Node
 
-
 const SPEED = 150.0
 const RUN_SPEED = 200.0
 const SLIDE_SPEED = 300.0
 const JUMP_VELOCITY = -425.0
 
 var health = 10
+var player_x_position = 0.0
+var player_y_position = 0.0
 
 var animation_picker = ["Idle", "Walk", "Run", "Jump", "Slide", "Attack", "Climb"]
 var current_animation = ""
@@ -34,6 +35,10 @@ func movement_input():
 	crouch = Input.is_action_pressed("crouch")
 	jump = Input.is_action_just_pressed("jump")
 	climb = Input.is_action_pressed("climb")
+
+func tracking(player):
+	player_x_position = player.global_position.x
+	player_y_position = player.global_position.y
 
 func player_movement(player, delta, direction, sprint, slide, crouch, jump, climb):
 	if jump and player.is_on_floor():

@@ -5,6 +5,7 @@ extends CharacterBody2D
 @onready var health_bar: ProgressBar = $HealthBar
 
 func _physics_process(delta: float) -> void:
+	PlayerData.tracking(player)
 	
 	PlayerData.movement_input()
 	
