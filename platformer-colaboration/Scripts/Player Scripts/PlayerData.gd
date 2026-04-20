@@ -8,6 +8,7 @@ const JUMP_VELOCITY = -425.0
 var health = 10
 var player_x_position = 0.0
 var player_y_position = 0.0
+var areas_within = []
 
 var animation_picker = ["Idle", "Walk", "Run", "Jump", "Slide", "Attack", "Climb"]
 var current_animation = ""
@@ -23,11 +24,6 @@ var jumped = false
 var sliding = false
 var can_climb = false
 
-#func gravity(player, delta):
-	#var gravity_value = ProjectSettings.get_setting("physics/2d/default_gravity")
-	#if gravity_on and not player.is_on_floor():
-		#player.velocity += player.get_gravity() * delta
-
 func movement_input():
 	direction = Input.get_axis("move_left", "move_right")
 	sprint = Input.is_action_pressed("run")
@@ -35,6 +31,14 @@ func movement_input():
 	crouch = Input.is_action_pressed("crouch")
 	jump = Input.is_action_just_pressed("jump")
 	climb = Input.is_action_pressed("climb")
+
+func areas_in(area):
+	var overlaps = area.get_overlapping_areas()
+	if not overlaps.is_empty():
+		for areas in overlaps:
+			areas_within = str(areas)
+	else:
+		areas_within = []
 
 func tracking(player):
 	player_x_position = player.global_position.x

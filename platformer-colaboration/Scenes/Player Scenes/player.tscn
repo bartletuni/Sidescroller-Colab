@@ -427,6 +427,10 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cab5n"]
+radius = 8.0
+height = 58.0
+
 [node name="Player" type="CharacterBody2D" unique_id=1447609646 groups=["Players"]]
 script = ExtResource("1_45clo")
 
@@ -455,3 +459,9 @@ max_value = 10.0
 step = 1.0
 value = 10.0
 show_percentage = false
+
+[node name="Detector" type="Area2D" parent="." unique_id=1341054499]
+
+[node name="detector_box" type="CollisionShape2D" parent="Detector" unique_id=1791660804]
+position = Vector2(1, 0)
+shape = SubResource("CapsuleShape2D_cab5n")

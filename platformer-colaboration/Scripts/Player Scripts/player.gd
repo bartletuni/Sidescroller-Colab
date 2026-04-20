@@ -3,8 +3,11 @@ extends CharacterBody2D
 @onready var player: CharacterBody2D = $"."
 @onready var animator: AnimatedSprite2D = $Animator
 @onready var health_bar: ProgressBar = $HealthBar
+@onready var detector: Area2D = $Detector
 
 func _physics_process(delta: float) -> void:
+	PlayerData.areas_in(detector)
+	
 	PlayerData.tracking(player)
 	
 	PlayerData.movement_input()
