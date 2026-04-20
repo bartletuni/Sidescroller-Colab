@@ -18,7 +18,9 @@ func _physics_process(delta: float) -> void:
 func _on_detection_radius_body_entered(body: Node2D) -> void:
 	var groups = body.get_groups()
 	if "Players" in groups:
-		EnemyData.run(enemy)
+		if EnemyData.attacking == 1:
+			EnemyData.speed = EnemyData.SPEED
+		EnemyData.speed *= 1.2
 
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
@@ -26,3 +28,10 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 	if "Players" in groups:
 		EnemyData.attacking = 1
 		EnemyData.damage(enemy_damage)
+
+
+func _on_hitbox_body_exited(body: Node2D) -> void:
+	var groups = body.get_groups()
+	if "Players" in groups:
+		EnemyData.attacking = 0
+		velocity.x = EnemyData.speed

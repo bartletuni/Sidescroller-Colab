@@ -8,7 +8,7 @@ func _physics_process(delta: float) -> void:
 	
 	PlayerData.movement_input()
 	
-	PlayerData.gravity(player, delta)
+	WorldData.gravity(player, delta)
 	
 	PlayerData.player_movement(player, delta, PlayerData.direction, PlayerData.sprint, 
 	PlayerData.slide, PlayerData.crouch, PlayerData.jump, PlayerData.climb)

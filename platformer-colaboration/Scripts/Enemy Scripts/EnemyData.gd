@@ -59,6 +59,3 @@ func animation(enemy):
 		AnimNum = 4
 
 	current_animation = animation_picker[AnimNum]
-	
-func run(enemy):
-	speed = SPEED * 1.2

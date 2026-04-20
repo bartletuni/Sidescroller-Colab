@@ -8,6 +8,6 @@ func _on_climb_box_body_entered(body: Node2D) -> void:
 
 func _on_climb_box_body_exited(body: Node2D) -> void:
 	var groups = body.get_groups()
-	PlayerData.gravity_on = true
+	WorldData.gravity_on = true
 	if "Players" in groups:
 		PlayerData.can_climb = false

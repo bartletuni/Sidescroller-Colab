@@ -21,12 +21,11 @@ var climb = Input
 var jumped = false
 var sliding = false
 var can_climb = false
-var gravity_on = true
 
-func gravity(player, delta):
-	var gravity_value = ProjectSettings.get_setting("physics/2d/default_gravity")
-	if gravity_on and not player.is_on_floor():
-		player.velocity += player.get_gravity() * delta
+#func gravity(player, delta):
+	#var gravity_value = ProjectSettings.get_setting("physics/2d/default_gravity")
+	#if gravity_on and not player.is_on_floor():
+		#player.velocity += player.get_gravity() * delta
 
 func movement_input():
 	direction = Input.get_axis("move_left", "move_right")
@@ -52,7 +51,7 @@ func player_movement(player, delta, direction, sprint, slide, crouch, jump, clim
 	if direction and not sprint and not jump and not slide and not climb:
 		player.velocity.x = direction * SPEED
 
-	elif direction and sprint and not jump and not slide:
+	elif direction and sprint and not jump and not slide and not climb:
 		player.velocity.x = direction * RUN_SPEED
 
 	elif not direction:
@@ -108,12 +107,16 @@ func animator(player):
 		AnimNum = 4
 
 	if can_climb and climb:
-		gravity_on = false
-		player.velocity.y = -150
+		WorldData.gravity_on = false
+		player.velocity.y = -100
 		AnimNum = 6
 
-	elif can_climb and not climb:
-		gravity_on = true
+	elif can_climb and not climb and not sprint:
+		WorldData.gravity_on = true
 		AnimNum = 0
-		
+
+	elif can_climb and sprint:
+		WorldData.gravity_on = false
+		player.velocity.y = 0
+
 	current_animation = animation_picker[AnimNum]
