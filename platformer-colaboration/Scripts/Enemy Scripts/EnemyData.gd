@@ -6,6 +6,7 @@ const DAMAGE = 1
 
 var speed = SPEED
 var attacking = 0
+var chasing = false
 var move_direction = 1
 var enemy_x_position	 = 0.0
 var enemy_y_position = 0.0
@@ -13,20 +14,21 @@ var enemy_y_position = 0.0
 var animation_picker = ["Idle", "Walk", "Run", "Jump", "Attack"]
 var current_animation = ""
 
+#PHYS_PRO: tracks enemy position
 func tracking(enemy):
 	enemy_x_position = enemy.global_position.x
 	enemy_y_position = enemy.global_position.y
 
 func standard_enemy_movement(enemy, player, detection_radius):
 	pass
-	
+
+#PHYS_PRO: Checks if the raycasts are colliding with anything then checks if that thing is a part of the level. If it is it switches the direction that the enemy is moving
 func ray_movement(enemy, ray_left, ray_right):
-	#Checks if the raycasts are colliding with anything then checks if that thing is a part of the level. If it is it switches the direction that the enemy is moving
-	if ray_left.is_colliding():
+	if ray_left.is_colliding() and not chasing:
 		var RayLeftCollider = ray_left.get_collider().get_class()
 		if RayLeftCollider == "TileMapLayer":
 			move_direction = 1
-	elif ray_right.is_colliding():
+	elif ray_right.is_colliding() and not chasing:
 		var RayRightCollider = ray_right.get_collider().get_class()
 		if RayRightCollider == "TileMapLayer":
 			move_direction = -1

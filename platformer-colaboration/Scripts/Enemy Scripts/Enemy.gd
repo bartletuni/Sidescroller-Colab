@@ -25,11 +25,17 @@ func _physics_process(delta: float) -> void:
 func _on_detection_radius_body_entered(body: Node2D) -> void:
 	var groups = body.get_groups()
 	if "Players" in groups:
+		EnemyData.chasing = true
 		EnemyData.run()
 
 func _on_detection_radius_body_exited(body: Node2D) -> void:
 	var groups = body.get_groups()
 	if "Players" in groups:
+		EnemyData.chasing = false
+		if $RayLeft.is_colliding():
+			EnemyData.move_direction = 1
+		elif $RayRight.is_colliding():
+			EnemyData.move_direction = -1
 		EnemyData.walk()
 
 

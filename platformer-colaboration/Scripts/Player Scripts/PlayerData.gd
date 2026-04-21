@@ -32,6 +32,7 @@ func movement_input():
 	jump = Input.is_action_just_pressed("jump")
 	climb = Input.is_action_pressed("climb")
 
+#PHYS_PRO: detects areas that the player is within for refrence in objects that apply an effect or change a status
 func areas_in(area):
 	var overlaps = area.get_overlapping_areas()
 	if not overlaps.is_empty():
@@ -40,10 +41,12 @@ func areas_in(area):
 	else:
 		areas_within = []
 
+#PHYS_PRO: tracks player coordinate data
 func tracking(player):
 	player_x_position = player.global_position.x
 	player_y_position = player.global_position.y
 
+#PHYS_PRO: recieves input and applys it to player movement for sidescrolling
 func player_movement(player, delta, direction, sprint, slide, crouch, jump, climb):
 	if jump and player.is_on_floor():
 		player.velocity.y = JUMP_VELOCITY
@@ -71,12 +74,11 @@ func player_movement(player, delta, direction, sprint, slide, crouch, jump, clim
 	if player.is_on_floor():
 		jumped = false
 
+#PHYS_PRO: applies player health to the healthbar
 func healthbar(bar):
 	bar.value = health
 
-func death(player):
-	WorldData.reload()
-
+#PHYS_PRO: detecrts player state based on movement and applies an applicable animation
 func animator(player):
 	var AnimNum = 0
 	
