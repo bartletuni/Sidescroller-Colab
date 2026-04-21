@@ -3,7 +3,6 @@ extends Node
 var gravity_on = true
 
 func reload():
-	#await get_tree().create_timer(3).timeout
 	get_tree().reload_current_scene()
 
 #PHYS_PRO: add gravity to whatever entity it is applied to
