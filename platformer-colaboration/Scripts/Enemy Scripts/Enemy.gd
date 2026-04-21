@@ -18,6 +18,8 @@ func _physics_process(delta: float) -> void:
 	
 	EnemyData.animation(enemy)
 	
+	WorldData.gravity(enemy, delta)
+	
 	$Animator.play(EnemyData.current_animation)
 
 func _on_detection_radius_body_entered(body: Node2D) -> void:
