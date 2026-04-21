@@ -2,6 +2,7 @@ extends Node
 
 var gravity_on = true
 
+#On Call: reloads the current scene
 func reload():
 	get_tree().reload_current_scene()
 
