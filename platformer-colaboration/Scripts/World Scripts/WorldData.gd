@@ -6,6 +6,7 @@ func reload():
 	#await get_tree().create_timer(3).timeout
 	get_tree().reload_current_scene()
 
+#PHYS_PRO: add gravity to whatever entity it is applied to
 func gravity(player, delta):
 	var gravity_value = ProjectSettings.get_setting("physics/2d/default_gravity")
 	if gravity_on and not player.is_on_floor():
