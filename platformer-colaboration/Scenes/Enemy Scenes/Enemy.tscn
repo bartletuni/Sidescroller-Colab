@@ -224,22 +224,27 @@ animation = &"Attack"
 autoplay = "Walk"
 
 [node name="RayLeft" type="RayCast2D" parent="." unique_id=271676554]
+position = Vector2(0, 20)
 target_position = Vector2(-35, 0)
 
 [node name="RayRight" type="RayCast2D" parent="." unique_id=1215439273]
+position = Vector2(0, 20)
 target_position = Vector2(35, 0)
 
 [node name="collision_box" type="CollisionShape2D" parent="." unique_id=1111316265]
+visible = false
 position = Vector2(0, 4)
 shape = SubResource("CapsuleShape2D_0sphq")
 
 [node name="hitbox" type="Area2D" parent="." unique_id=29848986]
+visible = false
 
 [node name="hitbox_shape" type="CollisionShape2D" parent="hitbox" unique_id=1522681613]
 position = Vector2(0, 4)
 shape = SubResource("CapsuleShape2D_25to5")
 
 [node name="detection_radius" type="Area2D" parent="." unique_id=1688325555]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detection_radius" unique_id=861285606]
 shape = SubResource("CircleShape2D_u5n0e")
