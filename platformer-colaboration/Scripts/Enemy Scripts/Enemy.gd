@@ -7,14 +7,16 @@ var enemy_damage = 1
 
 func _ready() -> void:
 	EnemyData.walk()
-	EnemyData.attacking = 0
-	EnemyData.move_direction = 1
 	velocity.x = EnemyData.speed
 
 func _physics_process(delta: float) -> void:
+	EnemyData.facing($Animator)
+	
+	EnemyData.orientation($Animator)
+	
 	EnemyData.tracking(enemy)
 	
-	EnemyData.ray_movement(enemy, $RayLeft, $RayRight)
+	EnemyData.ray_movement(enemy, delta, $RayLeft, $RayRight)
 	
 	EnemyData.animation(enemy)
 	
@@ -26,7 +28,7 @@ func _on_detection_radius_body_entered(body: Node2D) -> void:
 	var groups = body.get_groups()
 	if "Players" in groups:
 		EnemyData.chasing = true
-		EnemyData.run()
+		EnemyData.run($Animator)
 
 func _on_detection_radius_body_exited(body: Node2D) -> void:
 	var groups = body.get_groups()

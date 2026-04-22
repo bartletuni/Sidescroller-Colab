@@ -4,6 +4,8 @@ const SPEED = 150.0
 const RUN_SPEED = 200.0
 const SLIDE_SPEED = 300.0
 const JUMP_VELOCITY = -425.0
+const MOVEMENT_LERP = 12.0
+const STOP_LERP = 10.0
 
 var health = 10
 var player_x_position = 0.0
@@ -61,13 +63,15 @@ func player_movement(player, delta, direction, sprint, slide, crouch, jump, clim
 			sliding = true
 
 	if direction and not sprint and not jump and not slide and not climb:
-		player.velocity.x = direction * SPEED
+		player.velocity.x = lerp(player.velocity.x, direction * SPEED, clampf(MOVEMENT_LERP * delta, 0, 1))
 
 	elif direction and sprint and not jump and not slide and not climb:
-		player.velocity.x = direction * RUN_SPEED
+		player.velocity.x = lerp(player.velocity.x, direction * RUN_SPEED, clampf(MOVEMENT_LERP * delta, 0, 1))
 
 	elif not direction:
-		player.velocity.x = move_toward(player.velocity.x, 0, SPEED)
+		player.velocity.x = lerp(player.velocity.x, 0.0, clampf(STOP_LERP * delta, 0, 1))
+		if abs(player.velocity.x) < 1:
+			player.velocity.x = 0
 
 	player.move_and_slide()
 	
@@ -90,11 +94,11 @@ func animator(player):
 		player.animator.flip_h = true
 		AnimNum = 3
 
-	elif player.velocity.x > 0 and not sprint:
+	elif player.velocity.x > 25 and not sprint:
 		player.animator.flip_h = false
 		AnimNum = 1
 
-	elif player.velocity.x < 0 and not sprint:
+	elif player.velocity.x < -25 and not sprint:
 		player.animator.flip_h = true
 		AnimNum = 1
 
