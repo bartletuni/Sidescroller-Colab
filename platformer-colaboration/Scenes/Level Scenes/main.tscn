@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://no4daegh250p" path="res://CraftPix Level Assets/TILED_files/Tileset.png" id="1_ua7y4"]
 [ext_resource type="PackedScene" uid="uid://bhucdeffc8jd2" path="res://Scenes/Player Scenes/player.tscn" id="2_2b0cf"]
-[ext_resource type="Texture2D" uid="uid://44l6j384re1r" path="res://Assets/Textures/Dungeon_Tileset.png" id="2_ki4gf"]
+[ext_resource type="Texture2D" uid="uid://bpjwgqj0hjn2o" path="res://Assets/Textures/Box.png" id="2_sho4r"]
 [ext_resource type="PackedScene" uid="uid://bln64vt07qp5y" path="res://Scenes/Enemy Scenes/Enemy.tscn" id="3_4u2wh"]
 [ext_resource type="PackedScene" uid="uid://brjr21bvfx4sp" path="res://Scenes/Object Scenes/Ladder.tscn" id="8_axn02"]
 
@@ -889,18 +889,33 @@ terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.7176304, 0, 0.2713339, 1)
 sources/0 = SubResource("TileSetAtlasSource_2b0cf")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6jsww"]
-texture = ExtResource("2_ki4gf")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ki4gf"]
+texture = ExtResource("2_sho4r")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
+1:0/0 = 0
+1:0/0/custom_data_0 = true
+2:0/0 = 0
+2:0/0/custom_data_0 = true
+3:0/0 = 0
+3:0/0/custom_data_0 = true
+1:1/0 = 0
+1:1/0/custom_data_0 = true
+2:1/0 = 0
+2:1/0/custom_data_0 = true
+3:1/0 = 0
+3:1/0/custom_data_0 = true
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_ki4gf"]
+resource_name = "Ladder"
 scenes/1/scene = ExtResource("8_axn02")
 
-[sub_resource type="TileSet" id="TileSet_d2e0c"]
+[sub_resource type="TileSet" id="TileSet_6jsww"]
 tile_size = Vector2i(64, 64)
-sources/0 = SubResource("TileSetAtlasSource_6jsww")
-sources/3 = SubResource("TileSetScenesCollectionSource_ki4gf")
+custom_data_layer_0/name = "Crate"
+custom_data_layer_0/type = 1
+sources/0 = SubResource("TileSetAtlasSource_ki4gf")
+sources/1 = SubResource("TileSetScenesCollectionSource_ki4gf")
 
 [node name="Main" type="Node2D" unique_id=103056610]
 
@@ -910,8 +925,8 @@ tile_set = SubResource("TileSet_4u2wh")
 
 [node name="ObstacleLayer" type="TileMapLayer" parent="." unique_id=143374406]
 scale = Vector2(0.625, 0.625)
-tile_map_data = PackedByteArray("AAAMAAIAAwAAAAAAAQAMAAEAAwAAAAAAAQAMAAAAAwAAAAAAAQAMAP//AwAAAAAAAQA=")
-tile_set = SubResource("TileSet_d2e0c")
+tile_map_data = PackedByteArray("AAAMAP//AQAAAAAAAQAMAAAAAQAAAAAAAQAMAAEAAQAAAAAAAQAMAAIAAQAAAAAAAQA=")
+tile_set = SubResource("TileSet_6jsww")
 
 [node name="Player" parent="." unique_id=1447609646 instance=ExtResource("2_2b0cf")]
 position = Vector2(-15, 102)
