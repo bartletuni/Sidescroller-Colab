@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bhucdeffc8jd2" path="res://Scenes/Player Scenes/player.tscn" id="2_2b0cf"]
 [ext_resource type="Texture2D" uid="uid://bpjwgqj0hjn2o" path="res://Assets/Textures/Box.png" id="2_sho4r"]
 [ext_resource type="PackedScene" uid="uid://bln64vt07qp5y" path="res://Scenes/Enemy Scenes/Enemy.tscn" id="3_4u2wh"]
+[ext_resource type="PackedScene" uid="uid://sc7m6jklnxwn" path="res://Scenes/Object Scenes/Torch.tscn" id="4_6jsww"]
 [ext_resource type="PackedScene" uid="uid://brjr21bvfx4sp" path="res://Scenes/Object Scenes/Ladder.tscn" id="8_axn02"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2b0cf"]
@@ -910,12 +911,17 @@ texture_region_size = Vector2i(64, 64)
 resource_name = "Ladder"
 scenes/1/scene = ExtResource("8_axn02")
 
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_d2e0c"]
+resource_name = "Torch"
+scenes/1/scene = ExtResource("4_6jsww")
+
 [sub_resource type="TileSet" id="TileSet_6jsww"]
 tile_size = Vector2i(64, 64)
 custom_data_layer_0/name = "Crate"
 custom_data_layer_0/type = 1
 sources/0 = SubResource("TileSetAtlasSource_ki4gf")
 sources/1 = SubResource("TileSetScenesCollectionSource_ki4gf")
+sources/2 = SubResource("TileSetScenesCollectionSource_d2e0c")
 
 [node name="Main" type="Node2D" unique_id=103056610]
 
@@ -925,7 +931,7 @@ tile_set = SubResource("TileSet_4u2wh")
 
 [node name="ObstacleLayer" type="TileMapLayer" parent="." unique_id=143374406]
 scale = Vector2(0.625, 0.625)
-tile_map_data = PackedByteArray("AAAMAP//AQAAAAAAAQAMAAAAAQAAAAAAAQAMAAEAAQAAAAAAAQAMAAIAAQAAAAAAAQA=")
+tile_map_data = PackedByteArray("AAAMAP//AQAAAAAAAQAMAAAAAQAAAAAAAQAMAAEAAQAAAAAAAQAMAAIAAQAAAAAAAQAJAAAAAgAAAAAAAQD+/wEAAgAAAAAAAQABAAEAAgAAAAAAAQA=")
 tile_set = SubResource("TileSet_6jsww")
 
 [node name="Player" parent="." unique_id=1447609646 instance=ExtResource("2_2b0cf")]

@@ -6,6 +6,7 @@ const DAMAGE = 1
 const MOVEMENT_LERP = 8.0
 const STOP_LERP = 15.0
 
+var health = HEALTH
 var speed = SPEED
 var attacking = 0
 var chasing = false
@@ -56,9 +57,19 @@ func ray_movement(enemy, delta, ray_left, ray_right):
 func pathfinding_movement(enemy, player):
 	pass
 
+func take_damage(area):
+	var group = area.get_overlapping_areas()
+	if "AttackBox" in group:
+		health -= 1
+
 func damage(enemy_damage):
 	PlayerData.health -= enemy_damage
 
+func death(enemy, animator):
+	if health == 0:
+		animator.play("Death")
+		await get_tree().create_timer(0.5).timeout
+		enemy.queue_free()
 
 func facing(animator):
 	if chasing:

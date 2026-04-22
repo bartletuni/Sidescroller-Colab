@@ -232,8 +232,7 @@ position = Vector2(0, 20)
 target_position = Vector2(35, 0)
 
 [node name="collision_box" type="CollisionShape2D" parent="." unique_id=1111316265]
-visible = false
-position = Vector2(0, 4)
+position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_0sphq")
 
 [node name="hitbox" type="Area2D" parent="." unique_id=29848986]
@@ -248,6 +247,10 @@ visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detection_radius" unique_id=861285606]
 shape = SubResource("CircleShape2D_u5n0e")
+
+[node name="damagebox" type="Area2D" parent="." unique_id=227942726]
+
+[node name="damagebox_shape" type="CollisionShape2D" parent="damagebox" unique_id=236672465]
 
 [connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]

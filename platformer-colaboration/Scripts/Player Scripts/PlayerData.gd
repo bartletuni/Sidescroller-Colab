@@ -94,18 +94,23 @@ func healthbar(bar):
 
 #PHYS_PRO: enables player attack when the correct input is used
 func attack(leftbox, rightbox):
-	if attack_right:
-		attacking = true
-		rightbox.set_deferred("disabled", false)
-		await get_tree().create_timer(0.35).timeout
-		rightbox.set_deferred("disabled", true)
-		attacking = false
-	elif attack_left:
-		attacking = true
-		rightbox.set_deferred("disabled", false)
-		await get_tree().create_timer(0.35).timeout
-		rightbox.set_deferred("disabled", true)
-		attacking = false
+	var attackbox = null
+	
+	if health > 0 and not attacking:
+		if attack_right:
+			attacking = true
+			attackbox = rightbox
+		elif attack_left:
+			attacking = true
+			attackbox = leftbox
+		
+		if attackbox != null:
+			if is_instance_valid(attackbox):
+				attackbox.set_deferred("disabled", false)
+			await get_tree().create_timer(0.35).timeout
+			if is_instance_valid(attackbox):
+				attackbox.set_deferred("disabled", true)
+			attacking = false
 
 #PHYS_PRO: detecrts player state based on movement and applies an applicable animation
 func animator(player):
