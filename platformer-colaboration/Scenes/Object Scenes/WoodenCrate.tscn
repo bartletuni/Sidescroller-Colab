@@ -49,11 +49,13 @@ animations = [{
 size = Vector2(66, 64)
 
 [node name="Wooden Crate" type="StaticBody2D" unique_id=489216611]
+scale = Vector2(0.75, 0.75)
 script = ExtResource("1_g48ck")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=134414136]
 position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_np43t")
+disabled = true
 
 [node name="Animator" type="AnimatedSprite2D" parent="." unique_id=476527834]
 sprite_frames = SubResource("SpriteFrames_6ry34")

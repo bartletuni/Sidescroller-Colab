@@ -10,6 +10,8 @@ func _ready() -> void:
 	velocity.x = EnemyData.speed
 
 func _physics_process(delta: float) -> void:
+	EnemyData.death(enemy, animator)
+	
 	EnemyData.facing($Animator)
 	
 	EnemyData.orientation($Animator)
@@ -23,6 +25,12 @@ func _physics_process(delta: float) -> void:
 	WorldData.gravity(enemy, delta)
 	
 	$Animator.play(EnemyData.current_animation)
+
+func _on_hitbox_area_entered(area: Area2D) -> void:
+	pass
+
+func _on_detection_radius_area_entered(area: Area2D) -> void:
+	pass
 
 func _on_detection_radius_body_entered(body: Node2D) -> void:
 	var groups = body.get_groups()
@@ -52,3 +60,8 @@ func _on_hitbox_body_exited(body: Node2D) -> void:
 	var groups = body.get_groups()
 	if "Players" in groups:
 		EnemyData.attacking = 0
+
+func _on_damagebox_area_entered(area: Area2D) -> void:
+	var group = area.get_groups()
+	if "PlayerAttack" in group:
+		EnemyData.health -= 1

@@ -4,8 +4,8 @@ extends CharacterBody2D
 @onready var animator: AnimatedSprite2D = $Animator
 @onready var health_bar: ProgressBar = $HealthBar
 @onready var detector: Area2D = $Detector
-@onready var attackbox_left: CollisionShape2D = $AttackBox/attackbox_left
-@onready var attackbox_right: CollisionShape2D = $AttackBox/attackbox_right
+@onready var attackbox_left: CollisionShape2D = $AttackBox/attackbox_right
+@onready var attackbox_right: CollisionShape2D = $AttackBox/attackbox_left
 
 func _physics_process(delta: float) -> void:
 	PlayerData.areas_in(detector)
