@@ -40,23 +40,23 @@ region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nwp88"]
 atlas = ExtResource("1_dxwub")
-region = Rect2(64, 0, 64, 64)
+region = Rect2(128, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mk33d"]
 atlas = ExtResource("1_dxwub")
-region = Rect2(128, 0, 64, 64)
+region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o3hip"]
 atlas = ExtResource("1_dxwub")
-region = Rect2(192, 0, 64, 64)
+region = Rect2(256, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_60y4h"]
 atlas = ExtResource("1_dxwub")
-region = Rect2(256, 0, 64, 64)
+region = Rect2(320, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7x83x"]
 atlas = ExtResource("1_dxwub")
-region = Rect2(320, 0, 64, 64)
+region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ta51y"]
 atlas = ExtResource("1_dxwub")
@@ -105,6 +105,20 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="Gradient" id="Gradient_t2kc0"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0.72156864)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nwp88"]
+gradient = SubResource("Gradient_t2kc0")
+width = 200
+height = 128
+fill = 1
+fill_from = Vector2(0.48554912, 0.48554912)
+fill_to = Vector2(0.84682083, 0.10693642)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_t2kc0"]
+polygon = PackedVector2Array(-4, -10, -2.5, -6.5, 2.5, -6.5, 4, -10)
+
 [node name="Torch" type="StaticBody2D" unique_id=717065833]
 scale = Vector2(2, 2)
 
@@ -120,4 +134,18 @@ process_material = SubResource("ParticleProcessMaterial_60y4h")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=751746262]
 sprite_frames = SubResource("SpriteFrames_np122")
 autoplay = "default"
-frame_progress = 0.34672478
+frame = 4
+frame_progress = 0.048041377
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1007320216]
+position = Vector2(0, -11.685)
+color = Color(1, 0.686418, 0.4505703, 1)
+energy = 3.19
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 16.0
+texture = SubResource("GradientTexture2D_nwp88")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=710542007]
+position = Vector2(0, 1)
+occluder = SubResource("OccluderPolygon2D_t2kc0")

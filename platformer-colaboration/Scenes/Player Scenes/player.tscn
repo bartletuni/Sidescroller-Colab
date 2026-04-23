@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bhucdeffc8jd2"]
 
-[ext_resource type="Script" uid="uid://bps3pd3girxak" path="res://Scripts/Player Scripts/Player.gd" id="1_45clo"]
+[ext_resource type="Script" uid="uid://bps3pd3girxak" path="res://Scripts/Player Scripts/player.gd" id="1_45clo"]
 [ext_resource type="Texture2D" uid="uid://c4hmwwtw4i31y" path="res://Astronaut/climbing.png" id="2_cab5n"]
 [ext_resource type="Texture2D" uid="uid://cn66tw880ufwn" path="res://Astronaut/ATTACK.png" id="2_hlcjs"]
 [ext_resource type="Texture2D" uid="uid://1go6e5e261go" path="res://Astronaut/CROUCH.png" id="2_qpue1"]
@@ -11,6 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://c4np5gkmjdoxm" path="res://Astronaut/RUN.png" id="7_bn047"]
 [ext_resource type="Texture2D" uid="uid://dsrdv6wj5ofh1" path="res://Astronaut/SLIDE.png" id="8_qbc6l"]
 [ext_resource type="Texture2D" uid="uid://cave1h8oblj73" path="res://Astronaut/WALK.png" id="9_kg5gs"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_hlcjs"]
+polygon = PackedVector2Array(-7, -11, -6, 39, -5, 39, -6, -11)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cg0mt"]
 atlas = ExtResource("2_hlcjs")
@@ -466,6 +469,9 @@ size = Vector2(52, 20)
 
 [node name="Player" type="CharacterBody2D" unique_id=1447609646 groups=["Players"]]
 script = ExtResource("1_45clo")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=446203877]
+occluder = SubResource("OccluderPolygon2D_hlcjs")
 
 [node name="Animator" type="AnimatedSprite2D" parent="." unique_id=938781721]
 sprite_frames = SubResource("SpriteFrames_c4btd")
