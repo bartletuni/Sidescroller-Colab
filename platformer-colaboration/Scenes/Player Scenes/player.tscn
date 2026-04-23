@@ -507,14 +507,14 @@ show_percentage = false
 position = Vector2(1, 0)
 shape = SubResource("CapsuleShape2D_cab5n")
 
-[node name="AttackBox" type="Area2D" parent="." unique_id=661823661]
+[node name="AttackBox" type="Area2D" parent="." unique_id=661823661 groups=["PlayerAttack"]]
 
-[node name="attackbox_left" type="CollisionShape2D" parent="AttackBox" unique_id=1258479542]
+[node name="attackbox_left" type="CollisionShape2D" parent="AttackBox" unique_id=1258479542 groups=["PlayerAttack"]]
 position = Vector2(14.5, 0)
 shape = SubResource("RectangleShape2D_cab5n")
 disabled = true
 
-[node name="attackbox_right" type="CollisionShape2D" parent="AttackBox" unique_id=932902214]
+[node name="attackbox_right" type="CollisionShape2D" parent="AttackBox" unique_id=932902214 groups=["PlayerAttack"]]
 position = Vector2(-16, 0)
 shape = SubResource("RectangleShape2D_hlcjs")
 disabled = true

@@ -29,6 +29,7 @@ var jumped = false
 var sliding = false
 var can_climb = false
 var attacking = false
+var attack_direction = 1
 
 #PHYS_PRO: detects user input and assigns them to a respective variable
 func movement_input():
@@ -99,15 +100,25 @@ func attack(leftbox, rightbox):
 	if health > 0 and not attacking:
 		if attack_right:
 			attacking = true
+			attack_direction = 1
 			attackbox = rightbox
 		elif attack_left:
 			attacking = true
+			attack_direction = -1
 			attackbox = leftbox
 		
 		if attackbox != null:
+			if is_instance_valid(leftbox):
+				leftbox.set_deferred("disabled", true)
+			if is_instance_valid(rightbox):
+				rightbox.set_deferred("disabled", true)
 			if is_instance_valid(attackbox):
 				attackbox.set_deferred("disabled", false)
 			await get_tree().create_timer(0.35).timeout
+			if is_instance_valid(leftbox):
+				leftbox.set_deferred("disabled", true)
+			if is_instance_valid(rightbox):
+				rightbox.set_deferred("disabled", true)
 			if is_instance_valid(attackbox):
 				attackbox.set_deferred("disabled", true)
 			attacking = false
@@ -162,10 +173,10 @@ func animator(player):
 		WorldData.gravity_on = false
 		player.velocity.y = 0
 
-	if attacking and attack_left:
+	if attacking and attack_direction < 0:
 		player.animator.flip_h = true
 		AnimNum = 7
-	elif attacking and attack_right:
+	elif attacking and attack_direction > 0:
 		player.animator.flip_h = false
 		AnimNum = 7
 
