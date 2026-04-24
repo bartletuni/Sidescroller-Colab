@@ -463,17 +463,18 @@ radius = 8.0
 height = 58.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cab5n"]
-size = Vector2(49, 20)
+size = Vector2(34, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hlcjs"]
-size = Vector2(52, 20)
+size = Vector2(35, 20)
 
 [node name="Player" type="CharacterBody2D" unique_id=1447609646 groups=["Players"]]
 script = ExtResource("1_45clo")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=446203877]
-visible = false
+show_behind_parent = true
 occluder = SubResource("OccluderPolygon2D_hlcjs")
+occluder_light_mask = 3
 
 [node name="Animator" type="AnimatedSprite2D" parent="." unique_id=938781721]
 sprite_frames = SubResource("SpriteFrames_c4btd")
@@ -512,11 +513,11 @@ shape = SubResource("CapsuleShape2D_cab5n")
 [node name="AttackBox" type="Area2D" parent="." unique_id=661823661 groups=["PlayerAttack"]]
 
 [node name="attackbox_left" type="CollisionShape2D" parent="AttackBox" unique_id=1258479542 groups=["PlayerAttack"]]
-position = Vector2(14.5, 0)
+position = Vector2(22, 0)
 shape = SubResource("RectangleShape2D_cab5n")
 disabled = true
 
 [node name="attackbox_right" type="CollisionShape2D" parent="AttackBox" unique_id=932902214 groups=["PlayerAttack"]]
-position = Vector2(-16, 0)
+position = Vector2(-24.5, 0)
 shape = SubResource("RectangleShape2D_hlcjs")
 disabled = true

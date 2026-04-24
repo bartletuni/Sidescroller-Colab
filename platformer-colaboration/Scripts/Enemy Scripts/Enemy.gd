@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 @onready var enemy: CharacterBody2D = $"."
 @onready var animator: AnimatedSprite2D = $Animator
+@onready var PhysicsCrate = "res://Scripts/Object Scripts/PhysicsCrate.gd"
+
 
 var enemy_damage = 1
 
@@ -27,7 +29,12 @@ func _physics_process(delta: float) -> void:
 	$Animator.play(EnemyData.current_animation)
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
-	pass
+	var groups = area.get_groups()
+	if "Objects" in groups:
+		EnemyData.within = true
+		EnemyData.attacking = 1
+		await get_tree().create_timer(0.3).timeout
+		EnemyData.attacking = 0
 
 func _on_detection_radius_area_entered(area: Area2D) -> void:
 	pass
@@ -60,6 +67,11 @@ func _on_hitbox_body_exited(body: Node2D) -> void:
 	var groups = body.get_groups()
 	if "Players" in groups:
 		EnemyData.attacking = 0
+
+func _on_hitbox_area_exited(area: Area2D) -> void:
+	var groups = area.get_groups()
+	if "Objects" in groups:
+		EnemyData.within = false
 
 func _on_damagebox_area_entered(area: Area2D) -> void:
 	var group = area.get_groups()

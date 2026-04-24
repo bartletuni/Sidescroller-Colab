@@ -1,10 +1,13 @@
 [gd_scene format=3 uid="uid://qa6ug66m2l5i"]
 
-[ext_resource type="Script" path="res://Scripts/Object Scripts/PhysicsCrate.gd" id="1_82kup"]
+[ext_resource type="Script" uid="uid://b2mbbh3e5hin2" path="res://Scripts/Object Scripts/PhysicsCrate.gd" id="1_82kup"]
 [ext_resource type="Texture2D" uid="uid://djl2lqokmr31g" path="res://Assets/Textures/Crate.tres" id="2_82kup"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_kcrpe"]
 bounce = 0.5
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_82kup"]
+polygon = PackedVector2Array(-28, -23, -28, 31, 27, 31, 27, -23)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_honkb"]
 animations = [{
@@ -28,13 +31,17 @@ size = Vector2(54, 52)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uy3r2"]
 size = Vector2(62, 58)
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_82kup"]
-polygon = PackedVector2Array(-22, -25, -26, -24, -29, -15, -28, 32, 28, 32, 28, -21, 23, -24, -22, -25)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rw6fk"]
+size = Vector2(52, 42)
 
 [node name="Wooden Crate" type="RigidBody2D" unique_id=2039144065]
 physics_material_override = SubResource("PhysicsMaterial_kcrpe")
 gravity_scale = 0.8
 script = ExtResource("1_82kup")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=1942732737]
+occluder = SubResource("OccluderPolygon2D_82kup")
+occluder_light_mask = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1823681224]
 z_index = -1
@@ -43,16 +50,20 @@ animation = &"Full"
 autoplay = "Full"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1993640892]
+visible = false
 position = Vector2(-1, 3)
 shape = SubResource("RectangleShape2D_82kup")
 
 [node name="hitbox" type="Area2D" parent="." unique_id=350519273]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" unique_id=463714291]
 shape = SubResource("RectangleShape2D_uy3r2")
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=1942732737]
-visible = false
-occluder = SubResource("OccluderPolygon2D_82kup")
+[node name="enemyattackbox" type="Area2D" parent="." unique_id=2045002075 groups=["Objects"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemyattackbox" unique_id=2015336478]
+shape = SubResource("RectangleShape2D_rw6fk")
 
 [connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="area_entered" from="enemyattackbox" to="." method="_on_enemyattackbox_area_entered"]

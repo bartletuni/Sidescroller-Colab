@@ -13,6 +13,7 @@ var chasing = false
 var move_direction = 1
 var enemy_x_position	 = 0.0
 var enemy_y_position = 0.0
+var within = false
 
 var animation_picker = ["Idle", "Walk", "Run", "Jump", "Attack"]
 var current_animation = ""

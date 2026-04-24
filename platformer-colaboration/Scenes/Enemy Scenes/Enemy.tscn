@@ -2,29 +2,25 @@
 
 [ext_resource type="Texture2D" uid="uid://43u4706dio88" path="res://Astronaut/INJURED_WALK.png" id="1_0sphq"]
 [ext_resource type="Script" uid="uid://cd7env287knia" path="res://Scripts/Enemy Scripts/Enemy.gd" id="1_25to5"]
-[ext_resource type="Texture2D" uid="uid://wv0qpvvc5qib" path="res://Astronaut/PICKUP.png" id="2_odjcb"]
+[ext_resource type="Texture2D" uid="uid://cn66tw880ufwn" path="res://Astronaut/ATTACK.png" id="2_odjcb"]
 [ext_resource type="Texture2D" uid="uid://car6yptu4i2ak" path="res://Astronaut/IDLE.png" id="2_u5n0e"]
 [ext_resource type="Texture2D" uid="uid://c4np5gkmjdoxm" path="res://Astronaut/RUN.png" id="3_0ab82"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0hfvu"]
 atlas = ExtResource("2_odjcb")
-region = Rect2(0, 0, 92, 92)
+region = Rect2(184, 0, 92, 92)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_upd62"]
 atlas = ExtResource("2_odjcb")
-region = Rect2(92, 0, 92, 92)
+region = Rect2(276, 0, 92, 92)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_valgo"]
 atlas = ExtResource("2_odjcb")
-region = Rect2(184, 0, 92, 92)
+region = Rect2(368, 0, 92, 92)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3u5bs"]
 atlas = ExtResource("2_odjcb")
-region = Rect2(276, 0, 92, 92)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nbhbt"]
-atlas = ExtResource("2_odjcb")
-region = Rect2(368, 0, 92, 92)
+region = Rect2(0, 92, 92, 92)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_heljy"]
 atlas = ExtResource("2_u5n0e")
@@ -120,13 +116,10 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_3u5bs")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nbhbt")
 }],
 "loop": true,
 "name": &"Attack",
-"speed": 8.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -215,6 +208,10 @@ height = 74.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_u5n0e"]
 radius = 113.07078
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_odjcb"]
+radius = 13.0
+height = 70.0
+
 [node name="Enemy" type="CharacterBody2D" unique_id=1615103394 groups=["Enemies"]]
 script = ExtResource("1_25to5")
 
@@ -235,7 +232,7 @@ target_position = Vector2(35, 0)
 position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_0sphq")
 
-[node name="hitbox" type="Area2D" parent="." unique_id=29848986]
+[node name="hitbox" type="Area2D" parent="." unique_id=29848986 groups=["EnemyAttack"]]
 visible = false
 
 [node name="hitbox_shape" type="CollisionShape2D" parent="hitbox" unique_id=1522681613]
@@ -249,10 +246,13 @@ visible = false
 shape = SubResource("CircleShape2D_u5n0e")
 
 [node name="damagebox" type="Area2D" parent="." unique_id=227942726]
+visible = false
 
 [node name="damagebox_shape" type="CollisionShape2D" parent="damagebox" unique_id=236672465]
+shape = SubResource("CapsuleShape2D_odjcb")
 
 [connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="area_exited" from="hitbox" to="." method="_on_hitbox_area_exited"]
 [connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="body_exited" from="hitbox" to="." method="_on_hitbox_body_exited"]
 [connection signal="area_entered" from="detection_radius" to="." method="_on_detection_radius_area_entered"]

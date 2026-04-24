@@ -31,6 +31,7 @@ Enemies="Enemies"
 Players="Player Characters"
 PlayerAttack="Items used for player attacks"
 Objects="Environmental obstacles/interactables"
+EnemyAttack=""
 
 [input]
 

@@ -48,7 +48,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0xwq0"]
 size = Vector2(66, 64)
 
-[node name="Wooden Crate" type="StaticBody2D" unique_id=489216611]
+[node name="Wooden Crate" type="StaticBody2D" unique_id=489216611 groups=["Objects"]]
 scale = Vector2(0.75, 0.75)
 script = ExtResource("1_g48ck")
 
@@ -61,7 +61,7 @@ disabled = true
 sprite_frames = SubResource("SpriteFrames_6ry34")
 animation = &"Full"
 
-[node name="hitbox" type="Area2D" parent="." unique_id=689433044]
+[node name="hitbox" type="Area2D" parent="." unique_id=689433044 groups=["Objects"]]
 
 [node name="hitbox_shape" type="CollisionShape2D" parent="hitbox" unique_id=1828471282 groups=["Objects"]]
 shape = SubResource("RectangleShape2D_0xwq0")
