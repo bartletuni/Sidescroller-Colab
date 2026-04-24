@@ -1,14 +1,10 @@
-[gd_scene format=3 uid="uid://bk6t25r2v152"]
+[gd_scene format=3 uid="uid://qa6ug66m2l5i"]
 
-[ext_resource type="Script" uid="uid://b2mbbh3e5hin2" path="res://Scripts/Object Scripts/PhysicsCrate.gd" id="1_82kup"]
-[ext_resource type="Texture2D" uid="uid://bpjwgqj0hjn2o" path="res://Assets/Textures/Box.png" id="2_uy3r2"]
+[ext_resource type="Script" path="res://Scripts/Object Scripts/PhysicsCrate.gd" id="1_82kup"]
+[ext_resource type="Texture2D" uid="uid://djl2lqokmr31g" path="res://Assets/Textures/Crate.tres" id="2_82kup"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_kcrpe"]
 bounce = 0.5
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rw6fk"]
-atlas = ExtResource("2_uy3r2")
-region = Rect2(64, 64, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_honkb"]
 animations = [{
@@ -19,7 +15,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rw6fk")
+"texture": ExtResource("2_82kup")
 }],
 "loop": false,
 "name": &"Full",
@@ -32,12 +28,16 @@ size = Vector2(54, 52)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uy3r2"]
 size = Vector2(62, 58)
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_82kup"]
+polygon = PackedVector2Array(-22, -25, -26, -24, -29, -15, -28, 32, 28, 32, 28, -21, 23, -24, -22, -25)
+
 [node name="Wooden Crate" type="RigidBody2D" unique_id=2039144065]
 physics_material_override = SubResource("PhysicsMaterial_kcrpe")
 gravity_scale = 0.8
 script = ExtResource("1_82kup")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1823681224]
+z_index = -1
 sprite_frames = SubResource("SpriteFrames_honkb")
 animation = &"Full"
 autoplay = "Full"
@@ -50,5 +50,9 @@ shape = SubResource("RectangleShape2D_82kup")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" unique_id=463714291]
 shape = SubResource("RectangleShape2D_uy3r2")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=1942732737]
+visible = false
+occluder = SubResource("OccluderPolygon2D_82kup")
 
 [connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
