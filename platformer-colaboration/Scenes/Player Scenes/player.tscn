@@ -14,7 +14,19 @@
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_hlcjs"]
 closed = false
-polygon = PackedVector2Array(0, -13, 0, 33)
+polygon = PackedVector2Array(-53, 26, -53, -5)
+
+[sub_resource type="Gradient" id="Gradient_hlcjs"]
+offsets = PackedFloat32Array(0, 0.48, 1)
+colors = PackedColorArray(0.9835022, 0.85461456, 0.77979463, 1, 0.45634502, 0.39654115, 0.3618247, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_oycvb"]
+gradient = SubResource("Gradient_hlcjs")
+width = 175
+height = 120
+fill = 1
+fill_from = Vector2(0.49710983, 0.4913295)
+fill_to = Vector2(0.81213874, 0.13294798)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cg0mt"]
 atlas = ExtResource("2_hlcjs")
@@ -473,8 +485,14 @@ script = ExtResource("1_45clo")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=446203877]
 show_behind_parent = true
+position = Vector2(53, -5)
 occluder = SubResource("OccluderPolygon2D_hlcjs")
 occluder_light_mask = 3
+
+[node name="BodyLight" type="PointLight2D" parent="." unique_id=2019317681]
+shadow_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_oycvb")
+height = 20.0
 
 [node name="Animator" type="AnimatedSprite2D" parent="." unique_id=938781721]
 sprite_frames = SubResource("SpriteFrames_c4btd")

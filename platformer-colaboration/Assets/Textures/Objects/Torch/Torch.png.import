@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ctlgv7dp0iudk"
-path="res://.godot/imported/Crate_Normalmap.png-c786f0ef5a86a7de4bc934360ff82abc.ctex"
+uid="uid://g30y73pujkek"
+path="res://.godot/imported/Torch.png-48a37b595ac9412703906e25cb613043.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Textures/Crate_Normalmap.png"
-dest_files=["res://.godot/imported/Crate_Normalmap.png-c786f0ef5a86a7de4bc934360ff82abc.ctex"]
+source_file="res://Assets/Textures/Objects/Torch/Torch.png"
+dest_files=["res://.godot/imported/Torch.png-48a37b595ac9412703906e25cb613043.ctex"]
 
 [params]
 

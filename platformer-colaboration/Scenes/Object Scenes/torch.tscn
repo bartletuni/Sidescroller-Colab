@@ -1,10 +1,13 @@
 [gd_scene format=3 uid="uid://sc7m6jklnxwn"]
 
-[ext_resource type="Texture2D" uid="uid://g30y73pujkek" path="res://Assets/Textures/Torch.png" id="1_dxwub"]
-[ext_resource type="Texture2D" uid="uid://chb4w0c4yteh4" path="res://Assets/Textures/Torch_Flame.png" id="2_mk33d"]
-[ext_resource type="Texture2D" uid="uid://hme611pllmh3" path="res://Assets/Textures/Torch_Dead.png" id="2_nwp88"]
-[ext_resource type="Texture2D" uid="uid://bhtei0bm8vyin" path="res://Assets/Textures/FlameParticle1.png" id="2_t2kc0"]
+[ext_resource type="Texture2D" uid="uid://g30y73pujkek" path="res://Assets/Textures/Objects/Torch/Torch.png" id="1_dxwub"]
+[ext_resource type="Texture2D" uid="uid://chb4w0c4yteh4" path="res://Assets/Textures/Objects/Torch/Torch_Flame.png" id="2_mk33d"]
+[ext_resource type="Texture2D" uid="uid://hme611pllmh3" path="res://Assets/Textures/Objects/Torch/Torch_Dead.png" id="2_nwp88"]
+[ext_resource type="Texture2D" uid="uid://bhtei0bm8vyin" path="res://Assets/Textures/Objects/Torch/FlameParticle1.png" id="2_t2kc0"]
 [ext_resource type="Texture2D" uid="uid://cqcvy6mt5pewr" path="res://Assets/Textures/Torch_Gradient_Experi.png" id="4_o3hip"]
+[ext_resource type="Script" uid="uid://b48nmub38sb88" path="res://Scenes/Object Scenes/point_light_2d.gd" id="5_60y4h"]
+[ext_resource type="Texture2D" uid="uid://baal35r0w144e" path="res://Assets/Textures/Objects/Torch/Torch_Glow.png" id="7_7x83x"]
+[ext_resource type="Texture2D" uid="uid://dickvayfuuuy7" path="res://Assets/Textures/Objects/Torch/Torch_Dead_n.png" id="8_ta51y"]
 
 [sub_resource type="Curve" id="Curve_t2kc0"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.7882883, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -176,8 +179,10 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_t2kc0"]
-polygon = PackedVector2Array(-6, -10, -3, -9, 0, -10)
+[sub_resource type="CanvasTexture" id="CanvasTexture_np122"]
+diffuse_texture = ExtResource("2_nwp88")
+normal_texture = ExtResource("8_ta51y")
+specular_shininess = 0.49
 
 [node name="Torch" type="StaticBody2D" unique_id=717065833]
 z_index = -1
@@ -206,16 +211,18 @@ energy = 3.19
 shadow_enabled = true
 shadow_color = Color(0, 0, 0, 0.5019608)
 shadow_filter = 1
-shadow_filter_smooth = 8.4
+shadow_filter_smooth = 3.4
 shadow_item_cull_mask = 2
 texture = ExtResource("4_o3hip")
 offset = Vector2(0, -6.98)
 texture_scale = 0.3
+height = 4.0
+script = ExtResource("5_60y4h")
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimatedSprite2D" unique_id=765779041]
+modulate = Color(1, 0.6916667, 0.26, 0.39607844)
+position = Vector2(0, -12.68)
+texture = ExtResource("7_7x83x")
 
 [node name="Torch" type="Sprite2D" parent="." unique_id=2081102411]
-texture = ExtResource("2_nwp88")
-
-[node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=710542007]
-visible = false
-position = Vector2(3, 5)
-occluder = SubResource("OccluderPolygon2D_t2kc0")
+texture = SubResource("CanvasTexture_np122")

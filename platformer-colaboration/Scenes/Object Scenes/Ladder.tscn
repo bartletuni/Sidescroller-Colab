@@ -1,9 +1,17 @@
 [gd_scene format=3 uid="uid://brjr21bvfx4sp"]
 
 [ext_resource type="Script" uid="uid://decgnpwt2hvv0" path="res://Scripts/Object Scripts/Ladder.gd" id="1_2m6u6"]
-[ext_resource type="Texture2D" uid="uid://cdvmueuouxs31" path="res://Assets/Textures/Ladder.png" id="2_0w4l7"]
+[ext_resource type="Texture2D" uid="uid://cdvmueuouxs31" path="res://Assets/Textures/Objects/Ladder/Ladder.png" id="2_0w4l7"]
+[ext_resource type="Texture2D" uid="uid://c6il6iec1fqxf" path="res://Assets/Textures/Objects/Ladder/Ladder_n.png" id="3_bbmek"]
+[ext_resource type="Texture2D" uid="uid://dhmjgndgsuxix" path="res://Assets/Textures/Objects/Ladder/Ladder_s.png" id="4_edby8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8gu63"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_edby8"]
+diffuse_texture = ExtResource("2_0w4l7")
+normal_texture = ExtResource("3_bbmek")
+specular_texture = ExtResource("4_edby8")
+specular_shininess = 0.42
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2m6u6"]
 size = Vector2(31, 44)
@@ -19,7 +27,7 @@ disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1490878221]
 position = Vector2(10.5, 28.009258)
-texture = ExtResource("2_0w4l7")
+texture = SubResource("CanvasTexture_edby8")
 
 [node name="ClimbBox" type="Area2D" parent="." unique_id=1051294917]
 

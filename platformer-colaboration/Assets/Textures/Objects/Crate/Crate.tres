@@ -1,0 +1,7 @@
+[gd_resource type="CanvasTexture" format=3 uid="uid://djl2lqokmr31g"]
+
+[ext_resource type="Texture2D" uid="uid://cjljsmx7ik7ot" path="res://Assets/Textures/Objects/Crate/Crate.png" id="1_svhgh"]
+
+[resource]
+diffuse_texture = ExtResource("1_svhgh")
+specular_shininess = 0.21

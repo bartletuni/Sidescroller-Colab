@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://qa6ug66m2l5i"]
 
 [ext_resource type="Script" uid="uid://b2mbbh3e5hin2" path="res://Scripts/Object Scripts/PhysicsCrate.gd" id="1_82kup"]
-[ext_resource type="Texture2D" uid="uid://djl2lqokmr31g" path="res://Assets/Textures/Crate.tres" id="2_82kup"]
+[ext_resource type="Texture2D" uid="uid://djl2lqokmr31g" path="res://Assets/Textures/Objects/Crate/Crate.tres" id="2_82kup"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_kcrpe"]
 bounce = 0.5
@@ -36,7 +36,6 @@ size = Vector2(52, 42)
 
 [node name="Wooden Crate" type="RigidBody2D" unique_id=2039144065]
 physics_material_override = SubResource("PhysicsMaterial_kcrpe")
-gravity_scale = 0.8
 script = ExtResource("1_82kup")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=1942732737]

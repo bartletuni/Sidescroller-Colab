@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bhtei0bm8vyin"
-path="res://.godot/imported/FlameParticle1.png-48821b292797c61750e3f31e774ae65a.ctex"
+uid="uid://dri408vc4yrnr"
+path="res://.godot/imported/Ladder_n3.png-3b4882af75034827ccd18b95e0d6424a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Textures/FlameParticle1.png"
-dest_files=["res://.godot/imported/FlameParticle1.png-48821b292797c61750e3f31e774ae65a.ctex"]
+source_file="res://Assets/Textures/Objects/Ladder/Ladder_n3.png"
+dest_files=["res://.godot/imported/Ladder_n3.png-3b4882af75034827ccd18b95e0d6424a.ctex"]
 
 [params]
 

@@ -21,6 +21,11 @@ PlayerData="*uid://c8ea4kxkqrs35"
 EnemyData="*uid://d270qtqjan0ej"
 WorldData="*uid://q8wqiajvc6bs"
 
+[display]
+
+window/stretch/mode="canvas_items"
+window/stretch/scale_mode="integer"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/TileMapDual/plugin.cfg")
@@ -89,9 +94,10 @@ attack_right={
 [physics]
 
 3d/physics_engine="Jolt Physics"
+common/physics_interpolation=true
 
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
-2d/snap/snap_2d_transforms_to_pixel=true
+2d/stretch/scale_mode="integer"

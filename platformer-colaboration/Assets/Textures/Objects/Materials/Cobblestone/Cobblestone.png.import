@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://chb4w0c4yteh4"
-path="res://.godot/imported/Torch_Flame.png-f5eaef18b0bf2de21c378a7d7f1a4126.ctex"
+uid="uid://bxgc135fy2tso"
+path="res://.godot/imported/Cobblestone.png-3b846551c55395c0286451f80d11ca78.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Textures/Torch_Flame.png"
-dest_files=["res://.godot/imported/Torch_Flame.png-f5eaef18b0bf2de21c378a7d7f1a4126.ctex"]
+source_file="res://Assets/Textures/Objects/Materials/Cobblestone/Cobblestone.png"
+dest_files=["res://.godot/imported/Cobblestone.png-3b846551c55395c0286451f80d11ca78.ctex"]
 
 [params]
 
