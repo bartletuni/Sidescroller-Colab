@@ -70,7 +70,7 @@ func death(enemy, animator):
 	if health == 0:
 		animator.play("Death")
 		await get_tree().create_timer(0.5).timeout
-		enemy.queue_free()
+		enemy.queue_free() #hello
 
 func facing(animator):
 	if chasing:
