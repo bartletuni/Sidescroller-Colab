@@ -2,9 +2,12 @@ extends Node
 
 const HEALTH = 5
 const SPEED = 125
+const JUMP_HEIGHT = -325.0
 const DAMAGE = 1
 const MOVEMENT_LERP = 8.0
 const STOP_LERP = 15.0
+const ATTACK_DELAY = 0.5
+const ATTACK_LENGTH = 0.2
 
 var health = HEALTH
 var speed = SPEED
@@ -14,6 +17,12 @@ var move_direction = 1
 var enemy_x_position	 = 0.0
 var enemy_y_position = 0.0
 var within = false
+var kicking = 0.0
+var jump_height = JUMP_HEIGHT
+var dying = false
+var player_within_hitbox = false
+var attack_loop_running = false
+var hitbox_resetting = false
 
 var animation_picker = ["Idle", "Walk", "Run", "Jump", "Attack"]
 var current_animation = ""
@@ -65,12 +74,60 @@ func take_damage(area):
 
 func damage(enemy_damage):
 	PlayerData.health -= enemy_damage
+	
+func health_bar(health_bar):
+	health_bar.value = health
+
+func player_in_hitbox(hitbox):
+	player_within_hitbox = false
+	for body in hitbox.get_overlapping_bodies():
+		var groups = body.get_groups()
+		if "Players" in groups:
+			player_within_hitbox = true
+			break
+
+func attack_player(hitbox, hitbox_shape, enemy_damage):
+	attack_loop_running = true
+	while player_within_hitbox and not dying:
+		attacking = 1
+		damage(enemy_damage)
+		
+		if is_instance_valid(hitbox_shape):
+			hitbox_resetting = true
+			hitbox_shape.set_deferred("disabled", true)
+			await get_tree().physics_frame
+			if is_instance_valid(hitbox_shape):
+				hitbox_shape.set_deferred("disabled", false)
+			await get_tree().physics_frame
+			hitbox_resetting = false
+		
+		await get_tree().create_timer(ATTACK_LENGTH).timeout
+		attacking = 0
+		await get_tree().create_timer(ATTACK_DELAY).timeout
+		
+		if is_instance_valid(hitbox):
+			player_in_hitbox(hitbox)
+		else:
+			player_within_hitbox = false
+	
+	attacking = 0
+	attack_loop_running = false
+	hitbox_resetting = false
 
 func death(enemy, animator):
-	if health == 0:
+	if health <= 0 and not dying and is_instance_valid(enemy):
+		dying = true
+		attacking = 0
+		chasing = false
+		player_within_hitbox = false
+		attack_loop_running = false
+		hitbox_resetting = false
 		animator.play("Death")
 		await get_tree().create_timer(0.5).timeout
-		enemy.queue_free() #hello
+		if is_instance_valid(enemy):
+			enemy.queue_free()
+		health = HEALTH
+		dying = false
 
 func facing(animator):
 	if chasing:
@@ -88,26 +145,32 @@ func run(animator):
 
 func walk():
 	speed = SPEED
+	
+func jump(enemy):
+	enemy.velocity.y = jump_height
 
 func animation(enemy):
 	var AnimNum = 0
 	
-	if enemy.velocity.x > 0 and enemy.velocity.x < 126 and not attacking == 1:
+	if enemy.velocity.x > 0 and enemy.velocity.x < 126 and not attacking == 1 and not enemy.velocity.y != 0:
 		enemy.animator.flip_h = false
 		AnimNum = 1
 		
-	elif enemy.velocity.x < 0 and enemy.velocity.x < 126 and not attacking == 1:
+	elif enemy.velocity.x < 0 and enemy.velocity.x < 126 and not attacking == 1 and not enemy.velocity.y != 0:
 		enemy.animator.flip_h = true
 		AnimNum = 1
 		
-	elif enemy.velocity.x == 0 and not attacking == 1:
+	elif enemy.velocity.x == 0 and not attacking == 1 and not enemy.velocity.y != 0:
 		AnimNum = 0
 		
-	if enemy.velocity.x > 125 and not attacking == 1:
+	elif enemy.velocity.y != 0:
+		AnimNum = 3
+		
+	if enemy.velocity.x > 125 and not attacking == 1 and not enemy.velocity.y != 0:
 		enemy.animator.flip_h = false
 		AnimNum = 2
 		
-	elif enemy.velocity.x < -125 and not attacking == 1:
+	elif enemy.velocity.x < -125 and not attacking == 1 and not enemy.velocity.y != 0:
 		enemy.animator.flip_h = true
 		AnimNum = 2
 		

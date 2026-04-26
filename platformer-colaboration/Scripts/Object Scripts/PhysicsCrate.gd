@@ -27,10 +27,10 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 
 func _on_enemyattackbox_area_entered(area: Area2D) -> void:
 	var groups = area.get_groups()
-	while EnemyData.within:
+	while EnemyData.within and EnemyData.kicking > 0.65:
 		if "EnemyAttack" in groups and (wooden_crate.position.x < EnemyData.enemy_x_position):
 			fly_left = true
 		elif "EnemyAttack" in groups and (wooden_crate.position.x > EnemyData.enemy_x_position):
 			fly_right = true
-		
+			
 		await get_tree().create_timer(0.3).timeout
