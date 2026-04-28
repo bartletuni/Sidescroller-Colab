@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cqcvy6mt5pewr"
-path="res://.godot/imported/Torch_Gradient_Experi.png-e02b6b74c708269d6f0e5f16eb7d66f6.ctex"
+uid="uid://cjxrwukx6dgmi"
+path="res://.godot/imported/Foregroundtest.png-77ed4abe01e03c8d16e8e3119fc23e18.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Textures/Torch_Gradient_Experi.png"
-dest_files=["res://.godot/imported/Torch_Gradient_Experi.png-e02b6b74c708269d6f0e5f16eb7d66f6.ctex"]
+source_file="res://Assets/Textures/Testing/Foregroundtest.png"
+dest_files=["res://.godot/imported/Foregroundtest.png-77ed4abe01e03c8d16e8e3119fc23e18.ctex"]
 
 [params]
 

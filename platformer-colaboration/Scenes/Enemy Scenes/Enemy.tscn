@@ -272,6 +272,7 @@ script = ExtResource("1_25to5")
 sprite_frames = SubResource("SpriteFrames_heljy")
 animation = &"Jump"
 autoplay = "Walk"
+frame_progress = 0.82678586
 
 [node name="RayLeft" type="RayCast2D" parent="." unique_id=271676554]
 position = Vector2(0, 20)

@@ -14,5 +14,6 @@ func _process(delta: float) -> void:
 		target_energy = randf_range(min_energy, max_energy)
 	
 	energy = lerp(energy, target_energy, flicker_speed * delta)
-	#var target_scale = randf_range(0.98, 1.02)
+	
+	#var target_scale = randf_range(0.28, 0.45)
 	#texture_scale = lerp(texture_scale, target_scale, flicker_speed * delta)

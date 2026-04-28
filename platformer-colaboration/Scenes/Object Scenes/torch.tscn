@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://chb4w0c4yteh4" path="res://Assets/Textures/Objects/Torch/Torch_Flame.png" id="2_mk33d"]
 [ext_resource type="Texture2D" uid="uid://hme611pllmh3" path="res://Assets/Textures/Objects/Torch/Torch_Dead.png" id="2_nwp88"]
 [ext_resource type="Texture2D" uid="uid://bhtei0bm8vyin" path="res://Assets/Textures/Objects/Torch/FlameParticle1.png" id="2_t2kc0"]
-[ext_resource type="Texture2D" uid="uid://cqcvy6mt5pewr" path="res://Assets/Textures/Torch_Gradient_Experi.png" id="4_o3hip"]
+[ext_resource type="Texture2D" uid="uid://cqcvy6mt5pewr" path="res://Assets/Textures/Objects/Torch/Torch_Gradient_Experi.png" id="4_ta51y"]
 [ext_resource type="Script" uid="uid://b48nmub38sb88" path="res://Scenes/Object Scenes/point_light_2d.gd" id="5_60y4h"]
 [ext_resource type="Texture2D" uid="uid://baal35r0w144e" path="res://Assets/Textures/Objects/Torch/Torch_Glow.png" id="7_7x83x"]
 [ext_resource type="Texture2D" uid="uid://dickvayfuuuy7" path="res://Assets/Textures/Objects/Torch/Torch_Dead_n.png" id="8_ta51y"]
@@ -189,7 +189,6 @@ z_index = -1
 scale = Vector2(2, 2)
 
 [node name="Embers" type="GPUParticles2D" parent="." unique_id=1502621920]
-texture_filter = 2
 position = Vector2(0, -9.58)
 texture = ExtResource("2_t2kc0")
 lifetime = 1.43
@@ -198,13 +197,14 @@ explosiveness = 0.18
 randomness = 0.65
 process_material = SubResource("ParticleProcessMaterial_60y4h")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=751746262]
+[node name="Flame" type="AnimatedSprite2D" parent="." unique_id=751746262]
+texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_np122")
 animation = &"Flame"
 autoplay = "Flame"
 frame_progress = 0.49197695
 
-[node name="PointLight2D" type="PointLight2D" parent="AnimatedSprite2D" unique_id=1007320216]
+[node name="PointLight2D" type="PointLight2D" parent="Flame" unique_id=1007320216]
 position = Vector2(0, -11.685)
 color = Color(1, 0.686418, 0.4505703, 1)
 energy = 3.19
@@ -213,13 +213,13 @@ shadow_color = Color(0, 0, 0, 0.5019608)
 shadow_filter = 1
 shadow_filter_smooth = 3.4
 shadow_item_cull_mask = 2
-texture = ExtResource("4_o3hip")
-offset = Vector2(0, -6.98)
+texture = ExtResource("4_ta51y")
+offset = Vector2(0, -4.48)
 texture_scale = 0.3
 height = 4.0
 script = ExtResource("5_60y4h")
 
-[node name="Sprite2D" type="Sprite2D" parent="AnimatedSprite2D" unique_id=765779041]
+[node name="Sprite2D" type="Sprite2D" parent="Flame" unique_id=765779041]
 modulate = Color(1, 0.6916667, 0.26, 0.39607844)
 position = Vector2(0, -12.68)
 texture = ExtResource("7_7x83x")
