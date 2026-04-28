@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://hme611pllmh3" path="res://Assets/Textures/Objects/Torch/Torch_Dead.png" id="2_nwp88"]
 [ext_resource type="Texture2D" uid="uid://bhtei0bm8vyin" path="res://Assets/Textures/Objects/Torch/FlameParticle1.png" id="2_t2kc0"]
 [ext_resource type="Texture2D" uid="uid://cqcvy6mt5pewr" path="res://Assets/Textures/Objects/Torch/Torch_Gradient_Experi.png" id="4_ta51y"]
-[ext_resource type="Script" uid="uid://b48nmub38sb88" path="res://Scenes/Object Scenes/point_light_2d.gd" id="5_60y4h"]
+[ext_resource type="Script" uid="uid://b48nmub38sb88" path="res://Scripts/Object Scripts/point_light_2d.gd" id="5_60y4h"]
 [ext_resource type="Texture2D" uid="uid://baal35r0w144e" path="res://Assets/Textures/Objects/Torch/Torch_Glow.png" id="7_7x83x"]
 [ext_resource type="Texture2D" uid="uid://dickvayfuuuy7" path="res://Assets/Textures/Objects/Torch/Torch_Dead_n.png" id="8_ta51y"]
 

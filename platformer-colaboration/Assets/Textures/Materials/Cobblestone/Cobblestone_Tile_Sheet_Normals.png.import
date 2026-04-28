@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmndekawsrxn1"
-path="res://.godot/imported/Cobblestone_n.png-290e97381ae17277bf9a137b4bb7569c.ctex"
+uid="uid://b7bdnxrad1ajn"
+path="res://.godot/imported/Cobblestone_Tile_Sheet_Normals.png-89a403f1ce388d985bcc6a97a095ee29.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Textures/Objects/Materials/Cobblestone/Cobblestone_n.png"
-dest_files=["res://.godot/imported/Cobblestone_n.png-290e97381ae17277bf9a137b4bb7569c.ctex"]
+source_file="res://Assets/Textures/Materials/Cobblestone/Cobblestone_Tile_Sheet_Normals.png"
+dest_files=["res://.godot/imported/Cobblestone_Tile_Sheet_Normals.png-89a403f1ce388d985bcc6a97a095ee29.ctex"]
 
 [params]
 

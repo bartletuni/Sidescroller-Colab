@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bps3pd3girxak" path="res://Scripts/Player Scripts/player.gd" id="1_45clo"]
 [ext_resource type="Texture2D" uid="uid://c4hmwwtw4i31y" path="res://Astronaut/climbing.png" id="2_cab5n"]
 [ext_resource type="Texture2D" uid="uid://cn66tw880ufwn" path="res://Astronaut/ATTACK.png" id="2_hlcjs"]
+[ext_resource type="Script" uid="uid://b1eydwky5ol3a" path="res://Scripts/Player Scripts/body_light.gd" id="2_oycvb"]
 [ext_resource type="Texture2D" uid="uid://1go6e5e261go" path="res://Astronaut/CROUCH.png" id="2_qpue1"]
 [ext_resource type="Texture2D" uid="uid://car6yptu4i2ak" path="res://Astronaut/IDLE.png" id="3_cab5n"]
 [ext_resource type="Texture2D" uid="uid://43u4706dio88" path="res://Astronaut/INJURED_WALK.png" id="4_hlcjs"]
@@ -493,6 +494,7 @@ occluder_light_mask = 3
 shadow_item_cull_mask = 2
 texture = SubResource("GradientTexture2D_oycvb")
 height = 20.0
+script = ExtResource("2_oycvb")
 
 [node name="Animator" type="AnimatedSprite2D" parent="." unique_id=938781721]
 sprite_frames = SubResource("SpriteFrames_c4btd")
