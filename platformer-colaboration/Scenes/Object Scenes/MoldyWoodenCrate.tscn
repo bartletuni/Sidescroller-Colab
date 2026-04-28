@@ -34,7 +34,7 @@ size = Vector2(62, 58)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rw6fk"]
 size = Vector2(52, 42)
 
-[node name="Wooden Crate" type="RigidBody2D" unique_id=2039144065]
+[node name="MoldyWoodenCrate" type="RigidBody2D" unique_id=2039144065]
 mass = 0.5
 physics_material_override = SubResource("PhysicsMaterial_kcrpe")
 script = ExtResource("1_82kup")

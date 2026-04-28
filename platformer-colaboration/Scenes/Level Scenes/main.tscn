@@ -11,8 +11,13 @@
 [ext_resource type="Texture2D" uid="uid://bxgc135fy2tso" path="res://Assets/Textures/Materials/Cobblestone/Cobblestone.png" id="7_5wk77"]
 [ext_resource type="Texture2D" uid="uid://cmndekawsrxn1" path="res://Assets/Textures/Materials/Cobblestone/Cobblestone_n.png" id="8_5wk77"]
 [ext_resource type="PackedScene" uid="uid://brjr21bvfx4sp" path="res://Scenes/Object Scenes/Ladder.tscn" id="8_axn02"]
+<<<<<<< Updated upstream
 [ext_resource type="PackedScene" uid="uid://qa6ug66m2l5i" path="res://Scenes/Object Scenes/PhysicsCrate.tscn" id="9_bg7bk"]
 [ext_resource type="Texture2D" uid="uid://cjxrwukx6dgmi" path="res://Assets/Textures/Testing/Foregroundtest.png" id="12_8ufu2"]
+=======
+[ext_resource type="PackedScene" uid="uid://qa6ug66m2l5i" path="res://Scenes/Object Scenes/MoldyWoodenCrate.tscn" id="9_bg7bk"]
+[ext_resource type="PackedScene" uid="uid://bvvwdrihgny78" path="res://Scenes/Object Scenes/WoodenCrate.tscn" id="12_8ufu2"]
+>>>>>>> Stashed changes
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_bg7bk"]
 polygon = PackedVector2Array(-9.6, -9.6, 16, -9.6, 16, 9.6, -3.1999998, 3.2000008)
@@ -1035,6 +1040,7 @@ position = Vector2(160.71, 95)
 [node name="Wooden Crate" parent="." unique_id=2039144065 instance=ExtResource("9_bg7bk")]
 position = Vector2(-7, -7)
 
+<<<<<<< Updated upstream
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=1609248229]
 scroll_scale = Vector2(1.68, 1.68)
 repeat_size = Vector2(2560, 1440)
@@ -1044,3 +1050,7 @@ modulate = Color(0, 0, 0, 0.5254902)
 texture_filter = 2
 position = Vector2(1280, 720)
 texture = ExtResource("12_8ufu2")
+=======
+[node name="Wooden Crate2" parent="." unique_id=1925848874 instance=ExtResource("12_8ufu2")]
+position = Vector2(96, 84)
+>>>>>>> Stashed changes

@@ -1,21 +1,18 @@
-extends StaticBody2D
+extends RigidBody2D
 
-const HEALTH = 4
+@onready var wooden_crate: RigidBody2D = $"."
 
-var health = HEALTH
+var fly_left = false
+var fly_right = false
 
 func _physics_process(delta: float) -> void:
-	if health == 4:
-		$Animator.play("Full")
-	elif health == 2:
-		$Animator.play("Broken")
-	elif health < 1:
-		$Animator.play("Destroyed")
+	ObjectData.applied_force(wooden_crate, fly_left, fly_right)
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
-	var group = area.get_groups()
-	if "PlayerAttack" in group:
-		health -= 1
+	var groups = area.get_groups()
+	ObjectData.detect_player_attack(groups, wooden_crate, fly_left, fly_right)
 
-func _on_area_2d_area_entered(area: Area2D) -> void:
-	_on_hitbox_area_entered(area)
+
+func _on_enemyattackbox_area_entered(area: Area2D) -> void:
+	var groups = area.get_groups()
+	ObjectData.detect_enemy_attack(groups, wooden_crate, fly_left, fly_right)

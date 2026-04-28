@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://do7si2av73d3s"]
+
+[ext_resource type="Script" uid="uid://bgfpp5d7wxb6w" path="res://Scripts/Object Scripts/MoldyWoodenCrate.gd" id="1_g48ck"]
+[ext_resource type="Texture2D" uid="uid://bpjwgqj0hjn2o" path="res://Assets/Textures/Box.png" id="2_3deem"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_np43t"]
+size = Vector2(54, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ocbfa"]
+atlas = ExtResource("2_3deem")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d3ki6"]
+atlas = ExtResource("2_3deem")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fvfei"]
+atlas = ExtResource("2_3deem")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6ry34"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ocbfa")
+}],
+"loop": false,
+"name": &"Broken",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d3ki6")
+}],
+"loop": false,
+"name": &"Destroyed",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fvfei")
+}],
+"loop": false,
+"name": &"Full",
+"speed": 0.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0xwq0"]
+size = Vector2(66, 64)
+
+[node name="Wooden Crate" type="StaticBody2D" unique_id=489216611 groups=["Objects"]]
+scale = Vector2(0.75, 0.75)
+script = ExtResource("1_g48ck")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=134414136]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_np43t")
+disabled = true
+
+[node name="Animator" type="AnimatedSprite2D" parent="." unique_id=476527834]
+sprite_frames = SubResource("SpriteFrames_6ry34")
+animation = &"Full"
+
+[node name="hitbox" type="Area2D" parent="." unique_id=689433044 groups=["Objects"]]
+
+[node name="hitbox_shape" type="CollisionShape2D" parent="hitbox" unique_id=1828471282 groups=["Objects"]]
+shape = SubResource("RectangleShape2D_0xwq0")
+
+[connection signal="area_entered" from="hitbox" to="." method="_on_area_2d_area_entered"]
