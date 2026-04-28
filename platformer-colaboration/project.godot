@@ -20,7 +20,6 @@ config/icon="res://icon.svg"
 PlayerData="*uid://c8ea4kxkqrs35"
 EnemyData="*uid://d270qtqjan0ej"
 WorldData="*uid://q8wqiajvc6bs"
-ObjectData="*uid://dgmbhssitglwy"
 
 [display]
 
@@ -111,5 +110,4 @@ common/physics_interpolation=true
 
 textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
-2d/snap/snap_2d_transforms_to_pixel=true
 2d/stretch/scale_mode="integer"
