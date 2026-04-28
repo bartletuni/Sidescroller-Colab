@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 const SPEED = 150.0
 const RUN_SPEED = 200.0
@@ -10,6 +10,7 @@ const STOP_LERP = 10.0
 var health = 10
 var player_x_position = 0.0
 var player_y_position = 0.0
+var playermouse_x_position = 0.0
 var areas_within = []
 var AnimNum = 0
 
@@ -25,6 +26,7 @@ var jump = Input
 var climb = Input
 var attack_left = Input
 var attack_right = Input
+var click_attack = Input
 var jumped = false
 var sliding = false
 var can_climb = false
@@ -41,6 +43,7 @@ func movement_input():
 	climb = Input.is_action_pressed("climb")
 	attack_left = Input.is_action_just_pressed("attack_left")
 	attack_right = Input.is_action_just_pressed("attack_right")
+	click_attack = Input.is_action_just_pressed("click_attack")
 
 #PHYS_PRO: detects areas that the player is within for refrence in objects that apply an effect or change a status
 func areas_in(area):
@@ -55,6 +58,7 @@ func areas_in(area):
 func tracking(player):
 	player_x_position = player.global_position.x
 	player_y_position = player.global_position.y
+	playermouse_x_position = get_global_mouse_position().x
 
 #PHYS_PRO: recieves input and applys it to player movement for sidescrolling
 func player_movement(player, delta, direction, sprint, slide, crouch, jump, climb):
@@ -102,6 +106,15 @@ func attack(leftbox, rightbox):
 			attacking = true
 			attack_direction = 1
 			attackbox = rightbox
+		if click_attack:
+			if player_x_position > playermouse_x_position:
+				attacking = true
+				attack_direction = -1
+				attackbox = leftbox
+			else:
+				attacking = true
+				attack_direction = 1
+				attackbox = rightbox
 		elif attack_left:
 			attacking = true
 			attack_direction = -1
