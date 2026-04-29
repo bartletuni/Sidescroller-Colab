@@ -178,11 +178,11 @@ func animator(player):
 		player.velocity.y = -100
 		anim_num = 6
 
-	elif can_climb and not climb and not sprint and not attacking:
+	elif can_climb and not climb and not sprint and not attacking and not direction:
 		WorldData.gravity_on = true
 		anim_num = 0
 
-	elif can_climb and sprint and not attacking:
+	elif can_climb and sprint and not attacking and not direction:
 		WorldData.gravity_on = false
 		player.velocity.y = 0
 
