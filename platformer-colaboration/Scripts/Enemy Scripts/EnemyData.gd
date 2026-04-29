@@ -43,7 +43,8 @@ func tracking(enemy):
 func standard_enemy_movement(enemy, player, detection_radius):
 	pass
 
-#PHYS_PRO: Checks if the raycasts are colliding with anything then checks if that thing is a part of the level. If it is it switches the direction that the enemy is moving
+#PHYS_PRO: Checks if the raycasts are colliding with anything then checks if that thing is a part 
+#of the level. If it is it switches the direction that the enemy is moving
 func ray_movement(enemy, delta, ray_left, ray_right):
 	if ray_left.is_colliding() and not chasing:
 		var ray_left_collider = ray_left.get_collider().get_class()

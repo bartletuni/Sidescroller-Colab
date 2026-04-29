@@ -7,6 +7,8 @@ extends CharacterBody2D
 @onready var attackbox_left: CollisionShape2D = $AttackBox/attackbox_right
 @onready var attackbox_right: CollisionShape2D = $AttackBox/attackbox_left
 
+var mouse_position = get_global_mouse_position()
+
 func _physics_process(delta: float) -> void:
 	PlayerData.areas_in(detector)
 	
@@ -18,8 +20,7 @@ func _physics_process(delta: float) -> void:
 	
 	WorldData.gravity(player, delta)
 	
-	PlayerData.player_movement(player, delta, PlayerData.direction, PlayerData.sprint, 
-	PlayerData.slide, PlayerData.crouch, PlayerData.jump, PlayerData.climb)
+	PlayerData.player_movement(player, delta)
 	
 	PlayerData.animator(player)
 	
@@ -30,5 +31,7 @@ func _physics_process(delta: float) -> void:
 		PlayerData.health = 10
 		WorldData.reload()
 	
-	if animator.animation != PlayerData.current_animation:
-		$Animator.play(PlayerData.current_animation)
+	if mouse_position.x > PlayerData.player_x_position:
+		animator.flip_h = false
+	elif mouse_position.x < PlayerData.player_x_position:
+		animator.flip_h = true
