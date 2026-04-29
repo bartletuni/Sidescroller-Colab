@@ -9,7 +9,6 @@ const STOP_LERP = 15.0
 const ATTACK_DELAY = 0.5
 const ATTACK_LENGTH = 0.2
 
-var health = HEALTH
 var speed = SPEED
 var attacking = 0
 var chasing = false
@@ -47,12 +46,12 @@ func standard_enemy_movement(enemy, player, detection_radius):
 #PHYS_PRO: Checks if the raycasts are colliding with anything then checks if that thing is a part of the level. If it is it switches the direction that the enemy is moving
 func ray_movement(enemy, delta, ray_left, ray_right):
 	if ray_left.is_colliding() and not chasing:
-		var RayLeftCollider = ray_left.get_collider().get_class()
-		if RayLeftCollider == "TileMapLayer":
+		var ray_left_collider = ray_left.get_collider().get_class()
+		if ray_left_collider == "TileMapLayer":
 			move_direction = 1
 	elif ray_right.is_colliding() and not chasing:
-		var RayRightCollider = ray_right.get_collider().get_class()
-		if RayRightCollider == "TileMapLayer":
+		var ray_right_collider = ray_right.get_collider().get_class()
+		if ray_right_collider == "TileMapLayer":
 			move_direction = -1
 
 	if not attacking == 1:
@@ -67,15 +66,10 @@ func ray_movement(enemy, delta, ray_left, ray_right):
 func pathfinding_movement(enemy, player):
 	pass
 
-func take_damage(area):
-	var group = area.get_overlapping_areas()
-	if "AttackBox" in group:
-		health -= 1
-
 func damage(enemy_damage):
 	PlayerData.health -= enemy_damage
 	
-func health_bar(health_bar):
+func health_bar(health_bar, health):
 	health_bar.value = health
 
 func player_in_hitbox(hitbox):
@@ -86,7 +80,7 @@ func player_in_hitbox(hitbox):
 			player_within_hitbox = true
 			break
 
-func attack_player(hitbox, hitbox_shape, enemy_damage):
+func attack_player(hitbox, hitbox_shape, enemy_damage, health):
 	attack_loop_running = true
 	while player_within_hitbox and not dying:
 		attacking = 1
@@ -114,7 +108,7 @@ func attack_player(hitbox, hitbox_shape, enemy_damage):
 	attack_loop_running = false
 	hitbox_resetting = false
 
-func death(enemy, animator):
+func death(enemy, animator, health):
 	if health <= 0 and not dying and is_instance_valid(enemy):
 		dying = true
 		attacking = 0
@@ -150,31 +144,31 @@ func jump(enemy):
 	enemy.velocity.y = jump_height
 
 func animation(enemy):
-	var AnimNum = 0
+	var anim_num = 0
 	
 	if enemy.velocity.x > 0 and enemy.velocity.x < 126 and not attacking == 1 and not enemy.velocity.y != 0:
 		enemy.animator.flip_h = false
-		AnimNum = 1
+		anim_num = 1
 		
 	elif enemy.velocity.x < 0 and enemy.velocity.x < 126 and not attacking == 1 and not enemy.velocity.y != 0:
 		enemy.animator.flip_h = true
-		AnimNum = 1
+		anim_num = 1
 		
 	elif enemy.velocity.x == 0 and not attacking == 1 and not enemy.velocity.y != 0:
-		AnimNum = 0
+		anim_num = 0
 		
 	elif enemy.velocity.y != 0:
-		AnimNum = 3
+		anim_num = 3
 		
 	if enemy.velocity.x > 125 and not attacking == 1 and not enemy.velocity.y != 0:
 		enemy.animator.flip_h = false
-		AnimNum = 2
+		anim_num = 2
 		
 	elif enemy.velocity.x < -125 and not attacking == 1 and not enemy.velocity.y != 0:
 		enemy.animator.flip_h = true
-		AnimNum = 2
+		anim_num = 2
 		
 	elif attacking == 1:
-		AnimNum = 4
+		anim_num = 4
 
-	current_animation = animation_picker[AnimNum]
+	current_animation = animation_picker[anim_num]

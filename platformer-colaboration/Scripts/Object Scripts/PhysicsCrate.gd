@@ -38,7 +38,7 @@ func _physics_process(delta: float) -> void:
 				PlayerData.health -= 1
 				can_damage = false
 			elif "Enemies" in groups:
-				EnemyData.health -= 1
+				body.health -= 1
 				can_damage = false
 		
 		if linear_velocity.length() < 10.0:

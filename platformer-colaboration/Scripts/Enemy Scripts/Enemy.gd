@@ -2,15 +2,15 @@ extends CharacterBody2D
 
 @onready var enemy: CharacterBody2D = $"."
 @onready var animator: AnimatedSprite2D = $Animator
-@onready var PhysicsCrate = "res://Scripts/Object Scripts/PhysicsCrate.gd"
+#@onready var physics_crate = "res://Scripts/Object Scripts/PhysicsCrate.gd"
 @onready var health_bar: ProgressBar = $HealthBar
 @onready var hitbox: Area2D = $hitbox
 @onready var hitbox_shape: CollisionShape2D = $hitbox/hitbox_shape
 
 var enemy_damage = 1
+var health = EnemyData.HEALTH
 
 func _ready() -> void:
-	EnemyData.health = EnemyData.HEALTH
 	EnemyData.dying = false
 	EnemyData.attacking = 0
 	EnemyData.chasing = false
@@ -21,10 +21,12 @@ func _ready() -> void:
 	velocity.x = EnemyData.speed
 
 func _physics_process(delta: float) -> void:
-	if abs(EnemyData.enemy_x_position - PlayerData.player_x_position) <= 10 and not abs(EnemyData.enemy_y_position - PlayerData.player_y_position) > 64:
+	var x_dist = abs(EnemyData.enemy_x_position - PlayerData.player_x_position)
+	var y_dist = abs(EnemyData.enemy_y_position - PlayerData.player_y_position)
+	if x_dist <= 10 and not y_dist > 64:
 		velocity.x += 100
 	
-	EnemyData.death(enemy, animator)
+	EnemyData.death(enemy, animator, health)
 	
 	EnemyData.facing($Animator)
 	
@@ -40,7 +42,7 @@ func _physics_process(delta: float) -> void:
 	
 	$Animator.play(EnemyData.current_animation)
 	
-	EnemyData.health_bar(health_bar)
+	EnemyData.health_bar(health_bar, health)
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	var groups = area.get_groups()
@@ -79,7 +81,7 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 	if "Players" in groups:
 		EnemyData.player_within_hitbox = true
 		if not EnemyData.attack_loop_running:
-			EnemyData.attack_player(hitbox, hitbox_shape, enemy_damage)
+			EnemyData.attack_player(hitbox, hitbox_shape, enemy_damage, health)
 
 func _on_hitbox_body_exited(body: Node2D) -> void:
 	var groups = body.get_groups()
@@ -95,4 +97,4 @@ func _on_hitbox_area_exited(area: Area2D) -> void:
 func _on_damagebox_area_entered(area: Area2D) -> void:
 	var group = area.get_groups()
 	if "PlayerAttack" in group:
-		EnemyData.health -= 1
+		health -= 1
