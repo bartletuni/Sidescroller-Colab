@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bxgc135fy2tso" path="res://Assets/Textures/Materials/Cobblestone/Cobblestone.png" id="7_5wk77"]
 [ext_resource type="Texture2D" uid="uid://cmndekawsrxn1" path="res://Assets/Textures/Materials/Cobblestone/Cobblestone_n.png" id="8_5wk77"]
 [ext_resource type="PackedScene" uid="uid://brjr21bvfx4sp" path="res://Scenes/Object Scenes/Ladder.tscn" id="8_axn02"]
-[ext_resource type="PackedScene" uid="uid://qa6ug66m2l5i" path="res://Scenes/Object Scenes/PhysicsCrate.tscn" id="9_bg7bk"]
+[ext_resource type="PackedScene" uid="uid://bmin3paalwawg" path="res://Scenes/Object Scenes/MoldyWoodenCrate.tscn" id="9_bg7bk"]
 [ext_resource type="Texture2D" uid="uid://cjxrwukx6dgmi" path="res://Assets/Textures/Testing/Foregroundtest.png" id="12_8ufu2"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_bg7bk"]
@@ -1006,6 +1006,7 @@ sources/1 = SubResource("TileSetAtlasSource_uacqn")
 [node name="Main" type="Node2D" unique_id=103056610]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=526328196]
+visible = false
 color = Color(0.07196658, 0.08157759, 0.031541638, 1)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1379145283]
@@ -1036,6 +1037,7 @@ position = Vector2(160.71, 95)
 position = Vector2(-7, -7)
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=1609248229]
+visible = false
 scroll_scale = Vector2(1.68, 1.68)
 repeat_size = Vector2(2560, 1440)
 

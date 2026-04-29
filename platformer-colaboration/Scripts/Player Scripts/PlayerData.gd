@@ -12,7 +12,7 @@ var player_x_position = 0.0
 var player_y_position = 0.0
 var playermouse_x_position = 0.0
 var areas_within = []
-var AnimNum = 0
+var anim_num = 0
 
 var animation_picker = ["Idle", "Walk", "Run", "Jump", "Slide", "Attack", "Climb", "Attack"]
 var current_animation = ""
@@ -140,47 +140,47 @@ func attack(leftbox, rightbox):
 func animator(player):
 	if jumped and not player.is_on_floor() and player.velocity.x > 0:
 		player.animator.flip_h = false
-		AnimNum = 3
+		anim_num = 3
 
 	elif jumped and not player.is_on_floor() and player.velocity.x < 0:
 		player.animator.flip_h = true
-		AnimNum = 3
+		anim_num = 3
 
 	elif player.velocity.x > 25 and not sprint and not attacking:
 		player.animator.flip_h = false
-		AnimNum = 1
+		anim_num = 1
 
 	elif player.velocity.x < -25 and not sprint and not attacking:
 		player.animator.flip_h = true
-		AnimNum = 1
+		anim_num = 1
 
 	elif player.velocity.x > -25 and player.velocity.x < 25 and not attacking:
-		AnimNum = 0
+		anim_num = 0
 
 	elif player.velocity.x > 0 and sprint and not slide and not attacking:
 		player.animator.flip_h = false
-		AnimNum = 2
+		anim_num = 2
 
 	elif player.velocity.x < 0 and sprint and not slide and not attacking:
 		player.animator.flip_h = true
-		AnimNum = 2
+		anim_num = 2
 
 	elif player.velocity.x > 0 and sprint and slide and not attacking:
 		player.animator.flip_h = false
-		AnimNum = 4
+		anim_num = 4
 
 	elif player.velocity.x < 0 and sprint and slide and not attacking:
 		player.animator.flip_h = true
-		AnimNum = 4
+		anim_num = 4
 
 	if can_climb and climb and not attacking:
 		WorldData.gravity_on = false
 		player.velocity.y = -100
-		AnimNum = 6
+		anim_num = 6
 
 	elif can_climb and not climb and not sprint and not attacking:
 		WorldData.gravity_on = true
-		AnimNum = 0
+		anim_num = 0
 
 	elif can_climb and sprint and not attacking:
 		WorldData.gravity_on = false
@@ -188,9 +188,9 @@ func animator(player):
 
 	if attacking and attack_direction < 0:
 		player.animator.flip_h = true
-		AnimNum = 7
+		anim_num = 7
 	elif attacking and attack_direction > 0:
 		player.animator.flip_h = false
-		AnimNum = 7
+		anim_num = 7
 
-	current_animation = animation_picker[AnimNum]
+	current_animation = animation_picker[anim_num]
