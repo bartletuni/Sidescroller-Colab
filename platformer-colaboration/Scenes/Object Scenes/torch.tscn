@@ -182,11 +182,18 @@ animations = [{
 [sub_resource type="CanvasTexture" id="CanvasTexture_np122"]
 diffuse_texture = ExtResource("2_nwp88")
 normal_texture = ExtResource("8_ta51y")
-specular_shininess = 0.49
+specular_shininess = 0.5
 
 [node name="Torch" type="StaticBody2D" unique_id=717065833]
 z_index = -1
 scale = Vector2(2, 2)
+
+[node name="DropShadow" type="Sprite2D" parent="." unique_id=1289407399]
+modulate = Color(0, 0, 0, 0.92941177)
+texture_filter = 2
+position = Vector2(-0.075, 0.06999999)
+scale = Vector2(1.114, 1.02)
+texture = ExtResource("2_nwp88")
 
 [node name="Embers" type="GPUParticles2D" parent="." unique_id=1502621920]
 position = Vector2(0, -9.58)
@@ -205,7 +212,7 @@ autoplay = "Flame"
 frame_progress = 0.49197695
 
 [node name="PointLight2D" type="PointLight2D" parent="Flame" unique_id=1007320216]
-position = Vector2(0, -11.685)
+position = Vector2(-0.5, -11.5)
 color = Color(1, 0.686418, 0.4505703, 1)
 energy = 3.19
 shadow_enabled = true

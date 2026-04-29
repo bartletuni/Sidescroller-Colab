@@ -25,6 +25,13 @@ position = Vector2(10.015, 28)
 shape = SubResource("RectangleShape2D_8gu63")
 disabled = true
 
+[node name="DropShadow" type="Sprite2D" parent="." unique_id=1661300882]
+modulate = Color(0, 0, 0, 0.7254902)
+z_index = -1
+texture_filter = 2
+position = Vector2(9.37, 26.069)
+texture = ExtResource("2_0w4l7")
+
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1490878221]
 position = Vector2(10.5, 28.009258)
 texture = SubResource("CanvasTexture_edby8")

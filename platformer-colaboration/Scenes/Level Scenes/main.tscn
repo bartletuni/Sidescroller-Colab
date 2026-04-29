@@ -14,6 +14,14 @@
 [ext_resource type="PackedScene" uid="uid://bmin3paalwawg" path="res://Scenes/Object Scenes/MoldyWoodenCrate.tscn" id="9_bg7bk"]
 [ext_resource type="Texture2D" uid="uid://cjxrwukx6dgmi" path="res://Assets/Textures/Testing/Foregroundtest.png" id="12_8ufu2"]
 
+[sub_resource type="Environment" id="Environment_r5847"]
+background_mode = 3
+glow_enabled = true
+glow_normalized = true
+glow_strength = 0.92
+glow_bloom = 0.25
+volumetric_fog_density = 0.0
+
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_bg7bk"]
 polygon = PackedVector2Array(-9.6, -9.6, 16, -9.6, 16, 9.6, -3.1999998, 3.2000008)
 
@@ -1005,6 +1013,9 @@ sources/1 = SubResource("TileSetAtlasSource_uacqn")
 
 [node name="Main" type="Node2D" unique_id=103056610]
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1854113890]
+environment = SubResource("Environment_r5847")
+
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=526328196]
 visible = false
 color = Color(0.07196658, 0.08157759, 0.031541638, 1)
@@ -1018,7 +1029,7 @@ tile_set = SubResource("TileSet_imeam")
 
 [node name="ObstacleLayer" type="TileMapLayer" parent="." unique_id=143374406]
 scale = Vector2(0.625, 0.625)
-tile_map_data = PackedByteArray("AAAMAP//AQAAAAAAAQAMAAAAAQAAAAAAAQAMAAEAAQAAAAAAAQAMAAIAAQAAAAAAAQAJAAAAAgAAAAAAAQD+/wEAAgAAAAAAAQABAAEAAgAAAAAAAQAPAP7/AgAAAAAAAQD1////AgAAAAAAAQDv/wEAAgAAAAAAAQA=")
+tile_map_data = PackedByteArray("AAAMAP//AQAAAAAAAQAMAAAAAQAAAAAAAQAMAAEAAQAAAAAAAQAMAAIAAQAAAAAAAQD+/wEAAgAAAAAAAQABAAEAAgAAAAAAAQAPAP7/AgAAAAAAAQD1////AgAAAAAAAQDv////AgAAAAAAAQAJAP3/AgAAAAAAAQA=")
 tile_set = SubResource("TileSet_6jsww")
 
 [node name="Background" type="TileMapLayer" parent="." unique_id=37145980]
