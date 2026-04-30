@@ -7,9 +7,10 @@ extends CharacterBody2D
 @onready var attackbox_left: CollisionShape2D = $AttackBox/attackbox_right
 @onready var attackbox_right: CollisionShape2D = $AttackBox/attackbox_left
 
-var mouse_position = get_global_mouse_position()
 
 func _physics_process(delta: float) -> void:
+	var mouse_position = get_global_mouse_position()
+	
 	PlayerData.areas_in(detector)
 	
 	PlayerData.tracking(player)

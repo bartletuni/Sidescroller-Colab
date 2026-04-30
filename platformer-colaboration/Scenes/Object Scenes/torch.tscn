@@ -185,6 +185,7 @@ normal_texture = ExtResource("8_ta51y")
 specular_shininess = 0.5
 
 [node name="Torch" type="StaticBody2D" unique_id=717065833]
+light_mask = 15
 z_index = -1
 scale = Vector2(2, 2)
 

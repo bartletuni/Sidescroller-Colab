@@ -194,6 +194,38 @@ region = Rect2(92, 92, 92, 92)
 atlas = ExtResource("7_bn047")
 region = Rect2(184, 92, 92, 92)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_5lkxk"]
+atlas = ExtResource("7_bn047")
+region = Rect2(184, 92, 92, 92)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yqxgc"]
+atlas = ExtResource("7_bn047")
+region = Rect2(92, 92, 92, 92)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mdyh3"]
+atlas = ExtResource("7_bn047")
+region = Rect2(0, 92, 92, 92)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fyerh"]
+atlas = ExtResource("7_bn047")
+region = Rect2(368, 0, 92, 92)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qu23x"]
+atlas = ExtResource("7_bn047")
+region = Rect2(276, 0, 92, 92)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sf7id"]
+atlas = ExtResource("7_bn047")
+region = Rect2(184, 0, 92, 92)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gvogg"]
+atlas = ExtResource("7_bn047")
+region = Rect2(92, 0, 92, 92)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_buu8e"]
+atlas = ExtResource("7_bn047")
+region = Rect2(0, 0, 92, 92)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_pr8an"]
 atlas = ExtResource("8_qbc6l")
 region = Rect2(0, 0, 92, 92)
@@ -229,6 +261,38 @@ region = Rect2(368, 0, 92, 92)
 [sub_resource type="AtlasTexture" id="AtlasTexture_6m7ql"]
 atlas = ExtResource("9_kg5gs")
 region = Rect2(0, 92, 92, 92)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rb4ui"]
+atlas = ExtResource("4_hlcjs")
+region = Rect2(184, 92, 92, 92)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v1ae2"]
+atlas = ExtResource("4_hlcjs")
+region = Rect2(92, 92, 92, 92)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x1icy"]
+atlas = ExtResource("4_hlcjs")
+region = Rect2(0, 92, 92, 92)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6jswu"]
+atlas = ExtResource("4_hlcjs")
+region = Rect2(368, 0, 92, 92)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uyjpx"]
+atlas = ExtResource("4_hlcjs")
+region = Rect2(276, 0, 92, 92)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_edwex"]
+atlas = ExtResource("4_hlcjs")
+region = Rect2(184, 0, 92, 92)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_12t53"]
+atlas = ExtResource("4_hlcjs")
+region = Rect2(92, 0, 92, 92)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4xfe1"]
+atlas = ExtResource("4_hlcjs")
+region = Rect2(0, 0, 92, 92)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_c4btd"]
 animations = [{
@@ -406,6 +470,35 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_5lkxk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yqxgc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mdyh3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fyerh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qu23x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sf7id")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gvogg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_buu8e")
+}],
+"loop": true,
+"name": &"RunBackwards",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_pr8an")
 }, {
 "duration": 1.0,
@@ -440,7 +533,48 @@ animations = [{
 "loop": true,
 "name": &"Walk",
 "speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rb4ui")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v1ae2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x1icy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6jswu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uyjpx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_edwex")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_12t53")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4xfe1")
+}],
+"loop": true,
+"name": &"WalkBackwards",
+"speed": 12.0
 }]
+
+[sub_resource type="Gradient" id="Gradient_illumpoint"]
+offsets = PackedFloat32Array(0, 0.6, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.5, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_illumpoint"]
+gradient = SubResource("Gradient_illumpoint")
+width = 130
+height = 130
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.81213874, 0.84682083)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_45clo"]
 radius = 9.0
@@ -479,22 +613,26 @@ position = Vector2(53, -5)
 occluder = SubResource("OccluderPolygon2D_hlcjs")
 
 [node name="Animator" type="AnimatedSprite2D" parent="." unique_id=938781721]
+light_mask = 0
 sprite_frames = SubResource("SpriteFrames_c4btd")
-animation = &"Attack"
+animation = &"RunBackwards"
 autoplay = "Idle"
-frame = 3
-frame_progress = 1.0
 
 [node name="FlashlightRay" type="RayCast2D" parent="." unique_id=1179844642]
 
 [node name="BodyLight" type="PointLight2D" parent="." unique_id=2019317681]
 energy = 0.75
-shadow_enabled = true
+shadow_filter_smooth = 5.1
 shadow_item_cull_mask = 2
 texture = ExtResource("2_xio7c")
 texture_scale = 0.15
 height = 20.0
 script = ExtResource("2_oycvb")
+
+[node name="IlluminationPoint" type="PointLight2D" parent="." unique_id=-1275649614]
+shadow_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_illumpoint")
+height = 20.0
 
 [node name="CollisionBox" type="CollisionShape2D" parent="." unique_id=47658649]
 position = Vector2(1, 3)

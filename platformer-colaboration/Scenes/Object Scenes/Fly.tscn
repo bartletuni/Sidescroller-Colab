@@ -15,6 +15,14 @@ point_count = 4
 [sub_resource type="CurveTexture" id="CurveTexture_n5p7o"]
 curve = SubResource("Curve_f02dt")
 
+[sub_resource type="Curve" id="Curve_n5p7o"]
+_limits = [-8.0, 8.0, 0.0, 1.0]
+_data = [Vector2(0, -6.0075474), 0.0, 75.3963, 0, 0, Vector2(0.2657658, -3.7132072), 0.0, 0.0, 0, 0, Vector2(0.509009, 5.3433967), 0.0, 0.0, 0, 0, Vector2(0.7432432, -3.3509426), 0.0, 0.0, 0, 0, Vector2(1, 2.8075476), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="CurveTexture" id="CurveTexture_iloyt"]
+curve = SubResource("Curve_n5p7o")
+
 [sub_resource type="Curve" id="Curve_5tc1a"]
 _limits = [0.0, 200.0, 0.0, 1.0]
 _data = [Vector2(0, 100), 0.0, 0.0, 0, 0, Vector2(1, 100), 0.0, 0.0, 0, 0]
@@ -39,6 +47,9 @@ emission_ring_height = 0.0
 emission_ring_radius = 45.0
 emission_ring_inner_radius = 20.0
 emission_ring_cone_angle = 90.0
+angle_min = -4.9999895
+angle_max = 5.000011
+angle_curve = SubResource("CurveTexture_iloyt")
 inherit_velocity_ratio = 1.0
 initial_velocity_min = 0.5
 initial_velocity_max = 2.0

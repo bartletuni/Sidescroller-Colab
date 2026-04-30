@@ -41,7 +41,7 @@ script = ExtResource("1_82kup")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=1942732737]
 occluder = SubResource("OccluderPolygon2D_82kup")
-occluder_light_mask = 2
+occluder_light_mask = 8
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1823681224]
 z_index = -1

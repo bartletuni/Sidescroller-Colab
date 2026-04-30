@@ -275,9 +275,8 @@ script = ExtResource("1_25to5")
 
 [node name="Animator" type="AnimatedSprite2D" parent="." unique_id=809814956]
 sprite_frames = SubResource("SpriteFrames_heljy")
-animation = &"Jump"
+animation = &"Attack"
 autoplay = "Walk"
-frame_progress = 0.82678586
 
 [node name="RayLeft" type="RayCast2D" parent="." unique_id=271676554]
 position = Vector2(0, 20)

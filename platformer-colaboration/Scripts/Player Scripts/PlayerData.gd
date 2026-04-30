@@ -243,9 +243,19 @@ func animator(player):
 		PlayerState.IDLE:
 			anim = "Idle"
 		PlayerState.WALK:
-			anim = "Walk"
+			if Input.is_action_pressed("move_left") and player_x_position > playermouse_x_position \
+			or Input.is_action_pressed("move_right") and player_x_position < playermouse_x_position:
+				anim = "Walk"
+			if Input.is_action_pressed("move_left") and player_x_position < playermouse_x_position \
+			or Input.is_action_pressed("move_right") and player_x_position > playermouse_x_position:
+				anim = "WalkBackwards"
 		PlayerState.RUN:
-			anim = "Run"
+			if Input.is_action_pressed("move_left") and player_x_position > playermouse_x_position \
+			or Input.is_action_pressed("move_right") and player_x_position < playermouse_x_position:
+				anim = "Run"
+			if Input.is_action_pressed("move_left") and player_x_position < playermouse_x_position \
+			or Input.is_action_pressed("move_right") and player_x_position > playermouse_x_position:
+				anim = "RunBackwards"
 		PlayerState.JUMP, PlayerState.FALL:
 			anim = "Jump"
 		PlayerState.SLIDE:
